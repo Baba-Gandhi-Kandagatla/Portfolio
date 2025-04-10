@@ -157,6 +157,19 @@ const projects = [
       "/placeholder.svg?height=400&width=600&text=Product+Data+Display",
     ],
   },
+  {
+    title: "Skill Forge",
+    date: "2023 to Present",
+    idea: "A comprehensive LMS platform integrating topic-wise PDFs, recorded videos, quizzes, assessments, and an AI tutor powered by a vector database, combined with custom study plans.",
+    techStack: ["MERN", "AI", "Vector DB", "Gamification"],
+    innovation: "Combines advanced AI tutoring with interactive gamification, offering personalized learning roadmaps and engaging multiplayer quiz battles through matchmaking.",
+    impact: "Transforms learning by integrating modern tech and gamification, boosting student engagement and skill development.",
+    color: "bg-indigo-700",
+    images: [
+      "/placeholder.svg?height=400&width=600&text=Skill+Forge+Dashboard",
+      "/placeholder.svg?height=400&width=600&text=Skill+Forge+AI+Tutor",
+    ],
+  }
 ]
 
 interface TimelineProps {
