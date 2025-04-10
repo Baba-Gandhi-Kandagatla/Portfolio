@@ -10,6 +10,8 @@ const achievements = {
   hackathons: [
     "1st Prize in Enginerd Hackathon (KMIT) for Software & Physics Categories.",
     "Finalist in HackXcelerate Hackathon (Microsoft & Bytexl at CBIT) – awarded a certificate of participation.",
+    "Top 10 in Hackathon (BVRIT).",
+    "Top 15 in Hackathon (t-works, MGIT).",
     "IEEE Hackathon Award: Certificate of participation and appreciation from IEEE for winning a hackathon at Muffakham Jah College of Engineering and Technology (2nd year, 1st semester) with a congratulatory letter from the academic director.",
     "Winner in CHAT Olympiad (Chemistry Exam).",
   ],
