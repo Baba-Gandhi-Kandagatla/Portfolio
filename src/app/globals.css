@@ -412,14 +412,3 @@ html {
     transform: translateX(100%) rotate(-30deg);
   }
 }
-
-/* Interactive background dot */
-.interactive-dot {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  transition: transform 0.1s ease;
-  background: radial-gradient(circle at center, var(--primary) 0%, transparent 70%);
-  opacity: 0.6;
-  mix-blend-mode: screen;
-}

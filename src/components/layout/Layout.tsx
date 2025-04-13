@@ -84,10 +84,6 @@ export default function Layout({ children }: LayoutProps) {
   const { theme, setTheme } = useTheme();
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // State to track mouse position for background parallax effect
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [interactiveDot, setInteractiveDot] = useState({ x: 0, y: 0, size: 300 });
-  
   // State for floating shapes with fixed initial values for SSR
   const [floatingShapes, setFloatingShapes] = useState(initialShapes);
   
@@ -129,28 +125,6 @@ export default function Layout({ children }: LayoutProps) {
       size: 200 + (i * 50),
       opacity: 0.4 - (i * 0.05)
     }));
-  }, []);
-  
-  // Update mouse position for parallax effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX / window.innerWidth - 0.5,
-        y: e.clientY / window.innerHeight - 0.5
-      });
-      
-      // Update interactive dot position
-      setInteractiveDot({
-        x: e.clientX,
-        y: e.clientY,
-        size: 300 + (Math.sin(Date.now() / 1000) * 50)
-      });
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
   
   // Create particles for the rising bubble effect
@@ -293,18 +267,6 @@ export default function Layout({ children }: LayoutProps) {
         </>
       )}
       
-      {/* Interactive background dot that follows cursor */}
-      <div
-        className="interactive-dot dark:opacity-20"
-        style={{
-          left: interactiveDot.x + 'px',
-          top: interactiveDot.y + 'px',
-          width: interactiveDot.size + 'px',
-          height: interactiveDot.size + 'px',
-          transform: 'translate(-50%, -50%)'
-        }}
-      ></div>
-      
       {/* Floating decorative shapes */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {floatingShapes.map((shape) => {
@@ -382,9 +344,7 @@ export default function Layout({ children }: LayoutProps) {
               }}
               animate={{
                 opacity: 1,
-                scale: 1,
-                x: mousePosition.x * -5 * (shape.id % 3 + 1),
-                y: mousePosition.y * -5 * (shape.id % 3 + 1)
+                scale: 1
               }}
               transition={{
                 duration: 1,
@@ -397,32 +357,11 @@ export default function Layout({ children }: LayoutProps) {
         })}
       </div>
       
-      {/* Light mode animated background elements */}
+      {/* Light mode static background elements */}
       <div className="absolute inset-0 opacity-30 dark:opacity-0 pointer-events-none transition-opacity duration-700">
-        <motion.div 
-          className="absolute top-[-30%] right-[-10%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-blue-100 to-purple-100"
-          animate={{
-            x: mousePosition.x * -30,
-            y: mousePosition.y * -30,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 30 }}
-        />
-        <motion.div 
-          className="absolute bottom-[-30%] left-[-10%] w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-pink-100 to-indigo-100"
-          animate={{
-            x: mousePosition.x * 30,
-            y: mousePosition.y * 30,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 30 }}
-        />
-        <motion.div 
-          className="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-r from-yellow-100/60 to-green-100/60 blur-3xl"
-          animate={{
-            x: mousePosition.x * 20,
-            y: mousePosition.y * 20,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 30 }}
-        />
+        <div className="absolute top-[-30%] right-[-10%] w-[80%] h-[80%] rounded-full bg-gradient-to-br from-blue-100 to-purple-100" />
+        <div className="absolute bottom-[-30%] left-[-10%] w-[80%] h-[80%] rounded-full bg-gradient-to-tr from-pink-100 to-indigo-100" />
+        <div className="absolute top-[40%] left-[30%] w-[40%] h-[40%] rounded-full bg-gradient-to-r from-yellow-100/60 to-green-100/60 blur-3xl" />
       </div>
       
       <Navigation />
