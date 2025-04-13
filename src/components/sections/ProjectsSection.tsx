@@ -354,7 +354,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         <CardContent className="p-6 pt-0 space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
-              <motion.div key={tech} whileHover={hoverVariants.badge.hover}>
+              <motion.div key={tech} whileHover={hoverVariants.badge.hover} whileTap={hoverVariants.badge.tap}>
                 <Badge variant="secondary" className="text-xs hover:bg-primary/10 transition-colors">
                   {tech}
                 </Badge>
