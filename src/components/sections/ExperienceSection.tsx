@@ -29,7 +29,7 @@ export default function ExperienceSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-20%" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -54,7 +54,7 @@ export default function ExperienceSection() {
                   key={exp.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true, margin: "-15%" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <ExperienceCard
@@ -75,7 +75,7 @@ export default function ExperienceSection() {
                   key={achievement.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true, margin: "-15%" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <AchievementCard
@@ -95,7 +95,7 @@ export default function ExperienceSection() {
                   key={role.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
+                  viewport={{ once: true, margin: "-15%" }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <LeadershipCard

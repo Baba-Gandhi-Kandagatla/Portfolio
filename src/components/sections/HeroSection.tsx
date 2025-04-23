@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/personal-info";
 
@@ -28,99 +29,185 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center md:text-left md:items-start max-w-3xl mx-auto md:mx-0">
-          <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            {personalInfo.name}
-          </motion.h1>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
+          <div className="flex flex-col items-center text-center md:text-left md:items-start max-w-xl">
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              {personalInfo.name}
+            </motion.h1>
 
-          <motion.h2 
-            className="mt-4 text-2xl md:text-3xl text-muted-foreground font-medium"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-          >
-            {personalInfo.title}
-          </motion.h2>
+            <motion.h2 
+              className="mt-4 text-2xl md:text-3xl text-muted-foreground font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              {personalInfo.title}
+            </motion.h2>
 
-          <motion.p 
-            className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            {personalInfo.summary}
-          </motion.p>
+            <motion.p 
+              className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              {personalInfo.summary}
+            </motion.p>
 
-          <motion.div 
-            className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-          >
-            <Button asChild size="lg">
+            <motion.div 
+              className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+            >
+              <Button asChild size="lg">
+                <motion.a 
+                  href="#projects"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2"
+                >
+                  View Projects <ArrowRight className="h-4 w-4" />
+                </motion.a>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <motion.a 
+                  href="#contact"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="flex items-center gap-2"
+                >
+                  Get in Touch
+                </motion.a>
+              </Button>
+            </motion.div>
+
+            <motion.div 
+              className="mt-8 flex gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
               <motion.a 
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2"
+                href={personalInfo.links.github}
+                target="_blank" 
+                rel="noreferrer"
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
+                aria-label="GitHub"
               >
-                View Projects <ArrowRight className="h-4 w-4" />
+                <Github className="h-5 w-5" />
               </motion.a>
-            </Button>
-            <Button asChild variant="outline" size="lg">
               <motion.a 
-                href="#contact"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2"
+                href={personalInfo.links.linkedin}
+                target="_blank" 
+                rel="noreferrer"
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
+                aria-label="LinkedIn"
               >
-                Get in Touch
+                <Linkedin className="h-5 w-5" />
               </motion.a>
-            </Button>
-          </motion.div>
+              <motion.a 
+                href={`mailto:${personalInfo.email}`}
+                whileHover={{ y: -5, scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5" />
+              </motion.a>
+            </motion.div>
+          </div>
 
-          <motion.div 
-            className="mt-8 flex gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.4 }}
+          {/* Profile Image Area */}
+          <motion.div
+            className="hidden md:flex md:justify-center md:items-center mt-12 md:mt-0"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <motion.a 
-              href={personalInfo.links.github}
-              target="_blank" 
-              rel="noreferrer"
-              whileHover={{ y: -5, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5" />
-            </motion.a>
-            <motion.a 
-              href={personalInfo.links.linkedin}
-              target="_blank" 
-              rel="noreferrer"
-              whileHover={{ y: -5, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </motion.a>
-            <motion.a 
-              href={`mailto:${personalInfo.email}`}
-              whileHover={{ y: -5, scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="p-2 rounded-full bg-muted/50 hover:bg-muted transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </motion.a>
+            <div className="relative">
+              {/* Decorative background elements */}
+              <motion.div 
+                className="absolute -z-10 w-full h-full bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-2xl"
+                animate={{ 
+                  scale: [0.85, 1.05, 0.85],
+                  rotate: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
+              
+              {/* Animated border */}
+              <motion.div 
+                className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/50 to-accent/50 opacity-70"
+                animate={{ 
+                  rotate: [0, 360],
+                }}
+                transition={{ 
+                  duration: 20, 
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{ 
+                  filter: "blur(5px)"
+                }}
+              />
+              
+              {/* Profile image container */}
+              <motion.div 
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 relative z-10"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Replace with your image path */}
+                <Image 
+                  src="/profile.jpg" 
+                  alt="Profile"
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-cover"
+                  priority
+                />
+              </motion.div>
+              
+              {/* Floating elements */}
+              <motion.div
+                className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-primary/30 backdrop-blur-md z-20"
+                animate={{ 
+                  y: [0, -12, 0],
+                  x: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 5, 
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
+              <motion.div
+                className="absolute -bottom-6 left-6 w-8 h-8 rounded-full bg-accent/40 backdrop-blur-md z-20"
+                animate={{ 
+                  y: [0, 10, 0],
+                  x: [0, -8, 0]
+                }}
+                transition={{ 
+                  duration: 6, 
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 1
+                }}
+              />
+            </div>
           </motion.div>
         </div>
       </div>

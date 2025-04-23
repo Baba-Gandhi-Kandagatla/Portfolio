@@ -59,7 +59,7 @@ export default function ProjectsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-20%" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -91,8 +91,8 @@ export default function ProjectsSection() {
           <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
             <DialogContent className="max-w-xl sm:max-w-md md:max-w-xl w-[95%] max-h-[90vh] overflow-hidden">
               <DialogHeader className="pb-2">
-                <DialogTitle>{selectedProject.title}</DialogTitle>
-                <DialogDescription>Project Details</DialogDescription>
+                <DialogTitle className="text-2xl font-bold">{selectedProject.title}</DialogTitle>
+                <DialogDescription className="text-accent">Project Details</DialogDescription>
               </DialogHeader>
               
               <ScrollArea className="max-h-[calc(90vh-10rem)] pr-4">
@@ -102,83 +102,111 @@ export default function ProjectsSection() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Image Carousel */}
-                  <div className="relative overflow-hidden rounded-lg mb-4">
+                  {/* Image Carousel with enhanced animations */}
+                  <div className="relative overflow-hidden rounded-lg mb-4 group">
                     <div 
                       className="relative overflow-hidden rounded-lg aspect-video"
                     >
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={currentImageIndex}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          transition={{ duration: 0.5 }}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ 
+                            opacity: 1, 
+                            scale: 1,
+                            transition: { 
+                              duration: 0.4,
+                              ease: "easeOut"
+                            }
+                          }}
+                          exit={{ 
+                            opacity: 0, 
+                            scale: 1.05,
+                            transition: { duration: 0.2 }
+                          }}
                           className="absolute inset-0"
                         >
                           {selectedProject.images && selectedProject.images[currentImageIndex] ? (
-                            // Use actual image if available
-                            <img 
-                              src={selectedProject.images[currentImageIndex]}
-                              alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            // Fall back to color placeholder
-                            <ImagePlaceholder
-                              title={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                              bgColor={
-                                currentImageIndex === 0 
-                                  ? selectedProject.bgColor
-                                  : currentImageIndex === 1 
-                                    ? `bg-${selectedProject.bgColor.split('-')[1]}-500`
-                                    : `bg-${selectedProject.bgColor.split('-')[1]}-800`
-                              }
+                            // Use actual image if available with hover zoom effect
+                            <motion.div
                               className="w-full h-full"
-                            />
+                              whileHover={{ scale: 1.03 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <img 
+                                src={selectedProject.images[currentImageIndex]}
+                                alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
+                          ) : (
+                            // Fall back to color placeholder with hover effect
+                            <motion.div
+                              className="w-full h-full" 
+                              whileHover={{ scale: 1.03 }}
+                              transition={{ duration: 0.5 }}
+                            >
+                              <ImagePlaceholder
+                                title={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
+                                bgColor={
+                                  currentImageIndex === 0 
+                                    ? selectedProject.bgColor
+                                    : currentImageIndex === 1 
+                                      ? `bg-${selectedProject.bgColor.split('-')[1]}-500`
+                                      : `bg-${selectedProject.bgColor.split('-')[1]}-800`
+                                }
+                                className="w-full h-full"
+                              />
+                            </motion.div>
                           )}
                         </motion.div>
                       </AnimatePresence>
 
-                      {/* Navigation buttons */}
-                      <button 
+                      {/* Enhanced navigation buttons */}
+                      <motion.button 
                         onClick={(e) => {
                           e.stopPropagation();
                           prevImage();
                         }}
-                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-1.5 opacity-70 hover:opacity-100 transition-opacity"
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/20"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                         aria-label="Previous image"
                       >
                         <ChevronLeft className="h-5 w-5" />
-                      </button>
-                      <button 
+                      </motion.button>
+                      <motion.button 
                         onClick={(e) => {
                           e.stopPropagation();
                           nextImage();
                         }}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-1.5 opacity-70 hover:opacity-100 transition-opacity"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 rounded-full p-2 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-primary/20"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
                         aria-label="Next image"
                       >
                         <ChevronRight className="h-5 w-5" />
-                      </button>
+                      </motion.button>
                       
-                      {/* Image indicators */}
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-2">
+                      {/* Improved image indicators */}
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-3">
                         {(selectedProject.images && selectedProject.images.length > 0 
                           ? [...Array(selectedProject.images.length)]
                           : [0, 1, 2]
                         ).map((_, idx) => (
-                          <button
+                          <motion.button
                             key={idx}
                             onClick={(e) => {
                               e.stopPropagation();
                               setCurrentImageIndex(idx);
                             }}
-                            className={`h-2 w-2 rounded-full ${
+                            className={`h-2 w-2 rounded-full transition-all duration-300 ${
                               currentImageIndex === idx
-                                ? "bg-primary"
+                                ? "bg-primary w-4"
                                 : "bg-muted-foreground/30"
                             }`}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
                             aria-label={`View image ${idx + 1}`}
                           />
                         ))}
@@ -186,45 +214,84 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
-                  <div className="p-4 pt-2">
-                    <div className="mb-5">
+                  <motion.div className="p-4 pt-2 space-y-6">
+                    <motion.div 
+                      className="mb-5"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1, duration: 0.4 }}
+                    >
                       <h4 className="text-lg font-semibold mb-1.5">The Idea</h4>
                       <p className="text-muted-foreground text-sm">{selectedProject.idea}</p>
-                    </div>
+                    </motion.div>
                     
-                    <div className="mb-5">
+                    <motion.div 
+                      className="mb-5"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2, duration: 0.4 }}
+                    >
                       <h4 className="text-lg font-semibold mb-1.5">Tech Stack</h4>
                       <div className="flex flex-wrap gap-1.5">
-                        {selectedProject.techStack.map((tech) => (
-                          <Badge key={tech} variant="outline" className="text-xs">{tech}</Badge>
+                        {selectedProject.techStack.map((tech, index) => (
+                          <motion.div
+                            key={tech}
+                            initial={{ opacity: 0, y: 5 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.25 + (index * 0.05), duration: 0.3 }}
+                          >
+                            <Badge variant="outline" className="text-xs hover:bg-primary/10 transition-colors">{tech}</Badge>
+                          </motion.div>
                         ))}
                       </div>
-                    </div>
+                    </motion.div>
                     
-                    <div className="mb-5">
+                    <motion.div 
+                      className="mb-5"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.4 }}
+                    >
                       <h4 className="text-lg font-semibold mb-1.5">Innovation</h4>
                       <p className="text-muted-foreground text-sm">{selectedProject.innovation}</p>
-                    </div>
+                    </motion.div>
                     
-                    <div className="mb-5">
+                    <motion.div 
+                      className="mb-5"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.4 }}
+                    >
                       <h4 className="text-lg font-semibold mb-1.5">Impact</h4>
                       <p className="text-muted-foreground text-sm">{selectedProject.impact}</p>
-                    </div>
+                    </motion.div>
 
                     {selectedProject.projectUrl && (
-                      <div className="mt-6">
-                        <a 
+                      <motion.div 
+                        className="mt-6"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.4 }}
+                      >
+                        <motion.a 
                           href={selectedProject.projectUrl} 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="flex items-center text-primary hover:text-primary/80 transition-colors"
+                          whileHover={{ x: 5 }}
                         >
                           <span>Visit Project</span>
-                          <ExternalLink className="h-4 w-4 ml-2" />
-                        </a>
-                      </div>
+                          <motion.div
+                            whileHover={{ x: 2 }}
+                            transition={{ duration: 0.2 }}
+                            className="inline-block"
+                          >
+                            <ExternalLink className="h-4 w-4 ml-2" />
+                          </motion.div>
+                        </motion.a>
+                      </motion.div>
                     )}
-                  </div>
+                  </motion.div>
                 </motion.div>
               </ScrollArea>
             </DialogContent>
@@ -283,7 +350,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-15%" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={hoverVariants.lift.hover}
       whileTap={hoverVariants.lift.tap}
@@ -354,7 +421,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         <CardContent className="p-6 pt-0 space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
-              <motion.div key={tech} whileHover={hoverVariants.badge.hover} whileTap={hoverVariants.badge.tap}>
+              <motion.div key={tech} whileHover={hoverVariants.badge.hover}>
                 <Badge variant="secondary" className="text-xs hover:bg-primary/10 transition-colors">
                   {tech}
                 </Badge>
