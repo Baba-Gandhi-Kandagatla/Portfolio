@@ -110,25 +110,43 @@ export default function AboutSection() {
                 viewport={{ once: true, margin: "-20%" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card className="h-full overflow-hidden">
+                <Card className="h-full overflow-auto">
                   <CardContent className="p-6">
                     <h4 className="text-lg font-bold mb-4">{skillCategory.category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {skillCategory.items.map((skill, skillIndex) => (
+                    <motion.div 
+                      className="flex flex-wrap gap-2"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, margin: "-20%" }}
+                      variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                          opacity: 1,
+                          transition: {
+                            staggerChildren: 0.05
+                          }
+                        }
+                      }}
+                    >
+                      {skillCategory.items.map((skill) => (
                         <motion.div
                           key={skill}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true, margin: "-20%" }}
-                          transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
                           whileHover={{ scale: 1.05 }}
+                          variants={{
+                            hidden: { opacity: 0, scale: 0.8 },
+                            visible: { 
+                              opacity: 1, 
+                              scale: 1,
+                              transition: { duration: 0.3 }
+                            }
+                          }}
                         >
                           <Badge className="bg-primary/10 text-primary hover:bg-primary/20 transition-colors">
                             {skill}
                           </Badge>
                         </motion.div>
                       ))}
-                    </div>
+                    </motion.div>
                   </CardContent>
                 </Card>
               </motion.div>

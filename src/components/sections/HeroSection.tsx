@@ -29,8 +29,8 @@ export default function HeroSection() {
       </div>
 
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col items-center text-center md:text-left md:items-start max-w-xl">
+        <div className="flex flex-col md:flex-row md:items-center">
+          <div className="flex flex-col items-center text-center md:text-left md:items-start max-w-xl md:mr-8">
             <motion.h1 
               className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight"
               initial={{ opacity: 0, y: 20 }}
@@ -126,9 +126,9 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Profile Image Area */}
+          {/* Profile Image Area - Centered */}
           <motion.div
-            className="hidden md:flex md:justify-center md:items-center mt-12 md:mt-0"
+            className="flex justify-center items-center flex-1 mt-12 md:mt-0"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -136,9 +136,9 @@ export default function HeroSection() {
             <div className="relative">
               {/* Decorative background elements */}
               <motion.div 
-                className="absolute -z-10 w-full h-full bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-2xl"
+                className="absolute -z-10 w-full h-full bg-gradient-to-tr from-primary/20 to-accent/20 rounded-full blur-2xl scale-110"
                 animate={{ 
-                  scale: [0.85, 1.05, 0.85],
+                  scale: [1, 1.15, 1],
                   rotate: [0, 5, 0]
                 }}
                 transition={{ 
@@ -150,7 +150,7 @@ export default function HeroSection() {
               
               {/* Animated border */}
               <motion.div 
-                className="absolute -inset-1 rounded-full bg-gradient-to-r from-primary/50 to-accent/50 opacity-70"
+                className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary/50 to-accent/50 opacity-70"
                 animate={{ 
                   rotate: [0, 360],
                 }}
@@ -166,7 +166,7 @@ export default function HeroSection() {
               
               {/* Profile image container */}
               <motion.div 
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-white/10 relative z-10"
+                className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-white/10 relative z-10"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
@@ -174,8 +174,8 @@ export default function HeroSection() {
                 <Image 
                   src="/profile.jpg" 
                   alt="Profile"
-                  width={320}
-                  height={320}
+                  width={500}
+                  height={500}
                   className="w-full h-full object-cover"
                   priority
                 />
