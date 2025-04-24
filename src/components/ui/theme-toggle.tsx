@@ -1,39 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Moon, Sun, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
+  const { theme, setTheme } = useTheme();
   const [isHovering, setIsHovering] = useState(false);
-
-  // Initialize theme on component mount
-  useEffect(() => {
-    // Check for system preference or saved preference
-    const isDarkMode = localStorage.getItem("theme") === "dark" || 
-      (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    
-    setIsDark(isDarkMode);
-    
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
+  const isDark = theme === "dark";
 
   // Handle theme toggle
   const toggleTheme = () => {
-    setIsDark(!isDark);
-    
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
+    setTheme(isDark ? "light" : "dark");
   };
 
   // Generate random sparkle positions for the light mode button

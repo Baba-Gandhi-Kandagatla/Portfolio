@@ -59,7 +59,7 @@ export default function ProjectsSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
+          viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -350,7 +350,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15%" }}
+      viewport={{ once: true, margin: "-5%" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={hoverVariants.lift.hover}
       whileTap={hoverVariants.lift.tap}

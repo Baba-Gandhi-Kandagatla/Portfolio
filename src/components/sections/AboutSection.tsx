@@ -15,7 +15,7 @@ export default function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
+          viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -31,7 +31,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5 }}
           >
             <Card className="h-full overflow-hidden">
@@ -43,7 +43,7 @@ export default function AboutSection() {
                       key={index}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "-20%" }}
+                      viewport={{ once: true, margin: "-5%" }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                       className="space-y-1"
                     >
@@ -62,7 +62,7 @@ export default function AboutSection() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-2"
           >
@@ -94,7 +94,7 @@ export default function AboutSection() {
           <motion.h3
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5 }}
             className="text-2xl font-bold text-center mb-8"
           >
@@ -107,7 +107,7 @@ export default function AboutSection() {
                 key={skillCategory.category}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-20%" }}
+                viewport={{ once: true, margin: "-5%" }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="h-full overflow-auto">
@@ -117,7 +117,7 @@ export default function AboutSection() {
                       className="flex flex-wrap gap-2"
                       initial="hidden"
                       whileInView="visible"
-                      viewport={{ once: true, margin: "-20%" }}
+                      viewport={{ once: true, margin: "-5%" }}
                       variants={{
                         hidden: { opacity: 0 },
                         visible: {

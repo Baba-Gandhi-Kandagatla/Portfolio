@@ -15,7 +15,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
+          viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
@@ -31,7 +31,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5 }}
           >
             <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full">
@@ -58,7 +58,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full">
@@ -85,7 +85,7 @@ export default function ContactSection() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full">
@@ -111,7 +111,7 @@ export default function ContactSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-20%" }}
+          viewport={{ once: true, margin: "-5%" }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 flex flex-col items-center"
         >
