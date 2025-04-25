@@ -18,23 +18,42 @@ export interface Skill {
   items: string[];
 }
 
+export interface Project {
+  id: string;
+  title: string;
+  concept: string;
+  technologies: string[];
+  impact: string;
+}
+
+export interface Course {
+  name: string;
+}
+
 export const personalInfo = {
   name: "Baba Gandhi Kandagatla",
   title: "AI/ML Engineer and Full-Stack Developer",
-  summary: "Innovative AI/ML Engineer and Full-Stack Developer with expertise in developing cloud-based AI applications and modern web technologies. Experienced in building AI-powered solutions for education, healthcare, and security domains. Passionate about creating cutting-edge applications that solve real-world problems through the integration of AI, machine learning, and intuitive user interfaces.",
-  email: "babagandhi@example.com",
-  phone: "+91 1234567890",
+  summary: "AI/ML Engineer and Full-Stack Developer with expertise in building scalable machine learning solutions, cloud-based AI applications, and end-to-end software deployment. Proven experience in designing and deploying production-level AI solutions, integrating ML models with real-time systems, and optimizing performance using data-driven insights. Currently enhancing back-end skills with Spring Boot while continuously expanding leadership and technical acumen.",
+  email: "babagandhikandagatla@gmail.com",
+  phone: "+91 8309103893",
   location: "Hyderabad, India",
   links: {
-    github: "https://github.com/babagandhi",
-    linkedin: "https://www.linkedin.com/in/baba-gandhi-kandagatla"
+    github: "https://github.com/Baba-Gandhi-Kandagatla",
+    linkedin: "https://www.linkedin.com/in/baba-gandhi-kandagatla",
+    portfolio: "https://baba-gandhi-kandagatla.github.io/Portfolio/"
   },
   education: [
     {
       institution: "Keshav Memorial Institute of Technology",
-      degree: "Bachelor of Technology in Computer Science",
-      duration: "2022-2026",
-      gpa: "8.4/10.0"
+      degree: "B.Tech in Computer Science Engineering (AI/ML)",
+      duration: "2022-2026 (Expected)",
+      gpa: "8.4/10.0",
+      courses: [
+        "Natural Language Processing",
+        "Database Management",
+        "Software Engineering",
+        "Computer Networks"
+      ]
     },
     {
       institution: "Sri Chaitanya Junior College Prathiba branch",
@@ -54,47 +73,58 @@ export const personalInfo = {
 export const skills: Skill[] = [
   {
     category: "Programming Languages",
-    items: ["Python", "JavaScript", "TypeScript", "Java", "C++", "R"]
+    items: ["Java", "Python", "C", "C++", "JavaScript", "TypeScript", "R"]
   },
   {
     category: "Web Technologies",
-    items: ["React.js", "Next.js", "Node.js", "Express.js", "HTML5", "CSS3", "Tailwind CSS", "Material UI", "Redux"]
+    items: ["MERN Stack", "React.js", "Next.js", "Node.js", "Express.js", "Flask", "FastAPI", "HTML5", "CSS3", "Tailwind CSS", "Material UI", "Redux"]
   },
   {
     category: "Data Science & ML",
-    items: ["TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "Computer Vision", "NLP", "Reinforcement Learning"]
+    items: ["Model Fine Tuning", "Hyperparameter Tuning", "Transfer Learning", "ANN", "CNN", "RCNN (NLP)", "Transformers", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "Computer Vision", "NLP", "Reinforcement Learning"]
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS", "GCP", "Docker", "Kubernetes", "CI/CD", "Git", "GitHub Actions"]
+    items: ["AWS (EC2, Lambda, S3)", "GCP", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "GitHub Actions"]
   },
   {
     category: "Databases",
     items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Redis"]
+  },
+  {
+    category: "Tools",
+    items: ["VS Code", "Git", "GitHub", "PyCharm", "Maven"]
   }
 ];
 
 export const experiences: Experience[] = [
   {
-    id: "skillsage",
-    title: "AI Engineer/Full-Stack Developer",
-    organization: "SkillSage",
-    duration: "June 2024 - Present",
-    description: "Developed an AI-powered mock interview system that provides personalized feedback on communication skills and interview performance."
+    id: "skillsage-ai",
+    title: "Backend Developer - AI-Based Mock Interviews",
+    organization: "SkillSage Projects",
+    duration: "Feb 2025 - Present",
+    description: "Joined as Backend Developer in a team of 4 and integrated voice-based features into the frontend. Engineered AI-driven mock interviews using student data; currently under testing with a corporate partner."
+  },
+  {
+    id: "skillsage-webos",
+    title: "Developer - Interactive Web OS App Extension",
+    organization: "SkillSage Projects",
+    duration: "Mar 2024 - Apr 2024",
+    description: "Developed a visual student-data display for large monitors (e.g., LG TVs) in a 2-week sprint; awaiting full database integration for complete deployment."
   },
   {
     id: "results-automation",
     title: "Full-Stack Developer",
     organization: "Results Automation System",
-    duration: "Jan 2024 - May 2024",
-    description: "Built an automated grade retrieval system for Osmania University, streamlining the process of accessing academic records for thousands of students."
+    duration: "Sep 2023 - Dec 2023",
+    description: "Automated exam result processing, reducing turnaround time from 3 days to 1 minute. Currently implemented in examination branches at three colleges (NGIT, KMEC, KMCE)."
   },
   {
     id: "physics-lab",
     title: "Web Developer",
     organization: "Physics Virtual Lab",
-    duration: "Aug 2023 - Dec 2023",
-    description: "Created interactive physics simulations for educational purposes, using WebGL and Three.js to visualize complex physics concepts."
+    duration: "Sep 2023 - Dec 2023",
+    description: "Designed a lab simulation tool for physics experiments and student revision; deployed in January 2023 as part of a team of 3 developers."
   }
 ];
 
@@ -113,9 +143,15 @@ export const achievements: Achievement[] = [
   },
   {
     id: "hackathon-top10",
-    title: "Top 10 in National AI Challenge",
+    title: "Top 10 in National AI Challenge at BVRIT",
     description: "Recognized for developing a novel approach to predictive analytics in healthcare using machine learning.",
     date: "July 2023"
+  },
+  {
+    id: "hackathon-top15",
+    title: "Top 15 in Hackathon at t-works, MGIT",
+    description: "Selected among the top 15 teams for innovative technical solution.",
+    date: "May 2023"
   },
   {
     id: "ieee-award",
@@ -134,8 +170,15 @@ export const achievements: Achievement[] = [
     title: "The Hindu Feature",
     description: "Featured in The Hindu newspaper for innovative technology solutions addressing educational challenges.",
     date: "December 2022"
+  },
+  {
+    id: "certificates",
+    title: "Certificates of Appreciation",
+    description: "Received certificates of appreciation from Saksham Telangana & Streetcause Hyderabad for community initiatives.",
+    date: "2023"
   }
 ];
+
 
 export const leadership = [
   {
@@ -146,11 +189,18 @@ export const leadership = [
     description: "Mentor junior students in programming and AI/ML projects, organizing workshops and hands-on sessions."
   },
   {
+    id: "streetcause",
+    title: "Community Outreach Volunteer",
+    organization: "StreetCause KMIT",
+    duration: "2022-Present",
+    description: "Mentored 70 students and raised funds equivalent to 50 passes for village adoption projects near Bhadrachalam."
+  },
+  {
     id: "public-speaking",
     title: "Speaker",
     organization: "Vachan Speakers Club",
     duration: "2022-Present",
-    description: "Delivered orientation speeches and technical presentations on emerging technologies."
+    description: "Delivered 2 orientation speeches in front of an audience of 1000 people. Active member fostering communication and coordinating club events."
   },
   {
     id: "community-outreach",
