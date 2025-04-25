@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { motion } from "framer-motion"
+import { motion, type HTMLMotionProps } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { hoverVariants } from "@/lib/animations"
 
@@ -38,36 +38,46 @@ const buttonVariants = cva(
 
 const MotionButton = motion.button
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  
-  if (asChild) {
+// 1) Props when using asChild: only real HTML button props allowed.
+// 2) Props when not asChild: include all Framer motion props.
+type SlotButtonProps = VariantProps<typeof buttonVariants> &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    asChild: true
+  }
+
+type MotionButtonProps = VariantProps<typeof buttonVariants> &
+  Omit<HTMLMotionProps<"button">, "ref"> & {
+    asChild?: false
+  }
+
+type ButtonProps = SlotButtonProps | MotionButtonProps
+
+export function Button(props: ButtonProps) {
+  const { variant, size, className } = props
+
+  // —— asChild: forward only HTML button props into <Slot> —— 
+  if (props.asChild) {
+    // Remove our own props, leave only React.ButtonHTMLAttributes
+    const { asChild, variant, size, className, ...slotProps } = props
     return (
       <Slot
         data-slot="button"
         className={cn(buttonVariants({ variant, size, className }))}
-        {...props}
+        {...slotProps}
       />
     )
   }
 
+  // —— default (not-asChild): everything else is motion props —— 
+  const { asChild, variant: _v, size: _s, className: _c, ...motionProps } = props
   return (
     <MotionButton
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
+      {...motionProps}
+      // your standard hover/tap overrides
       whileHover={hoverVariants.button.hover}
       whileTap={hoverVariants.button.tap}
-      {...props}
     />
   )
 }
-
-export { Button, buttonVariants }
