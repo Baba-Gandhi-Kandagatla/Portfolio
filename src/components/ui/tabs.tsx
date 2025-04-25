@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { hoverVariants } from "@/lib/animations"
 
-const MotionTabsTrigger = motion(TabsPrimitive.Trigger)
+const MotionTabsTrigger = motion(TabsPrimitive.Trigger as any)
 
 function Tabs({
   className,
