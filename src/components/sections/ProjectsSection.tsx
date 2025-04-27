@@ -12,12 +12,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { 
-  Dialog, 
-  DialogContent, 
+import {
+  Dialog,
+  DialogContent,
   DialogTitle,
   DialogHeader,
-  DialogDescription
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ImagePlaceholder from "@/components/ui/image-placeholder";
@@ -28,29 +28,23 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Function to handle image carousel navigation
+  // Dialog carousel navigation
   const nextImage = () => {
-    if (selectedProject) {
-      const maxIndex = selectedProject.images && selectedProject.images.length > 0 
-        ? selectedProject.images.length - 1 
+    if (!selectedProject) return;
+    const maxIdx =
+      selectedProject.images && selectedProject.images.length > 0
+        ? selectedProject.images.length - 1
         : 2;
-      
-      setCurrentImageIndex((prev) => 
-        prev === maxIndex ? 0 : prev + 1
-      );
-    }
+    setCurrentImageIndex((p) => (p === maxIdx ? 0 : p + 1));
   };
 
   const prevImage = () => {
-    if (selectedProject) {
-      const maxIndex = selectedProject.images && selectedProject.images.length > 0 
-        ? selectedProject.images.length - 1 
+    if (!selectedProject) return;
+    const maxIdx =
+      selectedProject.images && selectedProject.images.length > 0
+        ? selectedProject.images.length - 1
         : 2;
-      
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? maxIndex : prev - 1
-      );
-    }
+    setCurrentImageIndex((p) => (p === 0 ? maxIdx : p - 1));
   };
 
   return (
@@ -63,19 +57,22 @@ export default function ProjectsSection() {
           transition={{ duration: 0.7 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">My Projects</h2>
-          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
+            My Projects
+          </h2>
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full mb-6" />
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore a showcase of my best work - from AI applications to web platforms and mobile solutions.
+            Explore a showcase of my best work — from AI applications to web
+            platforms and mobile solutions.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={index}
+          {projects.map((project, idx) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={idx}
               onClick={() => {
                 setSelectedProject(project);
                 setCurrentImageIndex(0);
@@ -85,19 +82,23 @@ export default function ProjectsSection() {
         </div>
       </div>
 
-      {/* Project Detail Dialog */}
+      {/* ===== Project-detail dialog ===== */}
       <AnimatePresence>
         {selectedProject && (
-          <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
+          <Dialog
+            open={!!selectedProject}
+            onOpenChange={(open) => !open && setSelectedProject(null)}
+          >
             <DialogContent className="max-w-xl sm:max-w-md md:max-w-xl w-[95%] max-h-[90vh] overflow-hidden">
               <DialogHeader className="pb-2">
-                <DialogTitle className="text-2xl font-bold">{selectedProject.title}</DialogTitle>
-                { /* changed: use muted-foreground for better contrast in both themes */ }
+                <DialogTitle className="text-2xl font-bold">
+                  {selectedProject.title}
+                </DialogTitle>
                 <DialogDescription className="text-sm text-muted-foreground">
                   Project Details
                 </DialogDescription>
               </DialogHeader>
-              
+
               <ScrollArea className="max-h-[calc(90vh-10rem)] pr-4">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -105,68 +106,59 @@ export default function ProjectsSection() {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Image Carousel with enhanced animations */}
+                  {/* ------- carousel ------- */}
                   <div className="relative overflow-hidden rounded-lg mb-4 group">
-                    <div 
-                      className="relative overflow-hidden rounded-lg aspect-video"
-                    >
+                    <div className="relative overflow-hidden rounded-lg aspect-video">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={currentImageIndex}
                           initial={{ opacity: 0, scale: 0.95 }}
-                          animate={{ 
-                            opacity: 1, 
+                          animate={{
+                            opacity: 1,
                             scale: 1,
-                            transition: { 
-                              duration: 0.4,
-                              ease: "easeOut"
-                            }
+                            transition: { duration: 0.4, ease: "easeOut" },
                           }}
-                          exit={{ 
-                            opacity: 0, 
+                          exit={{
+                            opacity: 0,
                             scale: 1.05,
-                            transition: { duration: 0.2 }
+                            transition: { duration: 0.2 },
                           }}
                           className="absolute inset-0"
                         >
-                          {selectedProject.images && selectedProject.images[currentImageIndex] ? (
-                            // Use actual image if available with hover zoom effect
-                            <motion.div
-                              className="w-full h-full"
-                              whileHover={{ scale: 1.03 }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              <img 
-                                src={selectedProject.images[currentImageIndex]}
-                                alt={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                                className="w-full h-full object-cover"
-                              />
-                            </motion.div>
+                          {selectedProject.images &&
+                          selectedProject.images[currentImageIndex] ? (
+                            <motion.img
+                              src={
+                                selectedProject.images[currentImageIndex] ??
+                                selectedProject.imageUrl
+                              }
+                              alt={`${selectedProject.imageAlt} (Preview ${
+                                currentImageIndex + 1
+                              })`}
+                              className="w-full h-full object-cover"
+                            />
                           ) : (
-                            // Fall back to color placeholder with hover effect
-                            <motion.div
-                              className="w-full h-full" 
-                              whileHover={{ scale: 1.03 }}
-                              transition={{ duration: 0.5 }}
-                            >
-                              <ImagePlaceholder
-                                title={`${selectedProject.title} - Image ${currentImageIndex + 1}`}
-                                bgColor={
-                                  currentImageIndex === 0 
-                                    ? selectedProject.bgColor
-                                    : currentImageIndex === 1 
-                                      ? `bg-${selectedProject.bgColor.split('-')[1]}-500`
-                                      : `bg-${selectedProject.bgColor.split('-')[1]}-800`
-                                }
-                                className="w-full h-full"
-                              />
-                            </motion.div>
+                            <ImagePlaceholder
+                              title={`${selectedProject.title} – Image ${
+                                currentImageIndex + 1
+                              }`}
+                              bgColor={
+                                currentImageIndex === 0
+                                  ? selectedProject.bgColor
+                                  : currentImageIndex === 1
+                                  ? `bg-${selectedProject.bgColor.split("-")[1]}-500`
+                                  : `bg-${
+                                      selectedProject.bgColor.split("-")[1]
+                                    }-800`
+                              }
+                              className="w-full h-full"
+                            />
                           )}
                         </motion.div>
                       </AnimatePresence>
 
-                      {/* Enhanced navigation buttons */}
-                      <motion.button 
+                      {/* nav buttons */}
+                      <motion.button
                         onClick={(e) => {
                           e.stopPropagation();
                           prevImage();
@@ -178,7 +170,7 @@ export default function ProjectsSection() {
                       >
                         <ChevronLeft className="h-5 w-5" />
                       </motion.button>
-                      <motion.button 
+                      <motion.button
                         onClick={(e) => {
                           e.stopPropagation();
                           nextImage();
@@ -190,10 +182,11 @@ export default function ProjectsSection() {
                       >
                         <ChevronRight className="h-5 w-5" />
                       </motion.button>
-                      
-                      {/* Improved image indicators */}
+
+                      {/* dots */}
                       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-3">
-                        {(selectedProject.images && selectedProject.images.length > 0 
+                        {(selectedProject.images &&
+                        selectedProject.images.length > 0
                           ? [...Array(selectedProject.images.length)]
                           : [0, 1, 2]
                         ).map((_, idx) => (
@@ -217,68 +210,96 @@ export default function ProjectsSection() {
                     </div>
                   </div>
 
+                  {/* -------- meta / copy -------- */}
                   <motion.div className="p-4 pt-2 space-y-6">
-                    <motion.div 
+                    {/* Idea */}
+                    <motion.div
                       className="mb-5"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1, duration: 0.4 }}
                     >
-                      <h4 className="text-lg font-semibold mb-1.5">The Idea</h4>
-                      <p className="text-muted-foreground text-sm">{selectedProject.idea}</p>
+                      <h4 className="text-lg font-semibold mb-1.5">
+                        The Idea
+                      </h4>
+                      <p className="text-muted-foreground text-sm">
+                        {selectedProject.idea}
+                      </p>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    {/* Tech */}
+                    <motion.div
                       className="mb-5"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2, duration: 0.4 }}
                     >
-                      <h4 className="text-lg font-semibold mb-1.5">Tech Stack</h4>
+                      <h4 className="text-lg font-semibold mb-1.5">
+                        Tech Stack
+                      </h4>
                       <div className="flex flex-wrap gap-1.5">
-                        {selectedProject.techStack.map((tech, index) => (
+                        {selectedProject.techStack.map((tech, i) => (
                           <motion.div
                             key={tech}
                             initial={{ opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.25 + (index * 0.05), duration: 0.3 }}
+                            transition={{
+                              delay: 0.25 + i * 0.05,
+                              duration: 0.3,
+                            }}
                           >
-                            <Badge variant="outline" className="text-xs hover:bg-primary/10 transition-colors">{tech}</Badge>
+                            <Badge
+                              variant="outline"
+                              className="text-xs hover:bg-primary/10 transition-colors"
+                            >
+                              {tech}
+                            </Badge>
                           </motion.div>
                         ))}
                       </div>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    {/* Innovation */}
+                    <motion.div
                       className="mb-5"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.3, duration: 0.4 }}
                     >
-                      <h4 className="text-lg font-semibold mb-1.5">Innovation</h4>
-                      <p className="text-muted-foreground text-sm">{selectedProject.innovation}</p>
+                      <h4 className="text-lg font-semibold mb-1.5">
+                        Innovation
+                      </h4>
+                      <p className="text-muted-foreground text-sm">
+                        {selectedProject.innovation}
+                      </p>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    {/* Impact */}
+                    <motion.div
                       className="mb-5"
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4, duration: 0.4 }}
                     >
-                      <h4 className="text-lg font-semibold mb-1.5">Impact</h4>
-                      <p className="text-muted-foreground text-sm">{selectedProject.impact}</p>
+                      <h4 className="text-lg font-semibold mb-1.5">
+                        Impact
+                      </h4>
+                      <p className="text-muted-foreground text-sm">
+                        {selectedProject.impact}
+                      </p>
                     </motion.div>
 
+                    {/* External link */}
                     {selectedProject.projectUrl && (
-                      <motion.div 
+                      <motion.div
                         className="mt-6"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5, duration: 0.4 }}
                       >
-                        <motion.a 
-                          href={selectedProject.projectUrl} 
-                          target="_blank" 
+                        <motion.a
+                          href={selectedProject.projectUrl}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center text-primary hover:text-primary/80 transition-colors"
                           whileHover={{ x: 5 }}
@@ -305,6 +326,10 @@ export default function ProjectsSection() {
   );
 }
 
+/* =======================================================
+   ProjectCard  (grid tile)
+   ======================================================= */
+
 interface ProjectCardProps {
   project: Project;
   index: number;
@@ -312,47 +337,52 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({ project, index, onClick }: ProjectCardProps) {
-  const [hoverImageIndex, setHoverImageIndex] = useState(0);
   const hoverTimerRef = useRef<NodeJS.Timeout | null>(null);
-  
-  // These values track which image to display when hovering
   const [isHovering, setIsHovering] = useState(false);
   const [currentHoverIndex, setCurrentHoverIndex] = useState(0);
-  // State to track when card is clicked for animations
   const [isClicked, setIsClicked] = useState(false);
-  
+
+  const totalHoverImages =
+    project.images && project.images.length > 0 ? project.images.length : 3;
+
+  const displaySrc = isHovering
+    ? project.images && project.images[currentHoverIndex]
+      ? project.images[currentHoverIndex]
+      : project.imageUrl
+    : project.imageUrl;
+
+  const displayAlt =
+    project.imageAlt + (isHovering ? ` (Preview ${currentHoverIndex + 1})` : "");
+
+  /* ------------ hover handlers ------------ */
   const handleMouseEnter = () => {
     setIsHovering(true);
-    // Start cycling through images when hovering
     hoverTimerRef.current = setInterval(() => {
-      setCurrentHoverIndex(prev => (prev + 1) % 3);
+      setCurrentHoverIndex((prev) => (prev + 1) % totalHoverImages);
     }, 1200);
   };
-  
+
   const handleMouseLeave = () => {
     setIsHovering(false);
     if (hoverTimerRef.current) {
       clearInterval(hoverTimerRef.current);
-      setCurrentHoverIndex(0);
+      hoverTimerRef.current = null;
     }
+    setCurrentHoverIndex(0);
   };
-  
+
   const handleClick = () => {
-    // Set clicked state to trigger animation
     setIsClicked(true);
-    
-    // Short delay to allow animation to show before opening dialog
     setTimeout(() => {
       onClick();
-      // Reset clicked state after animation completes
       setTimeout(() => setIsClicked(false), 300);
     }, 150);
   };
 
+  /* ------------ render ------------ */
   return (
     <motion.div>
       <Card
-        // make card a column container so footer sticks to bottom
         className="flex flex-col overflow-hidden h-full border cursor-pointer group transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
@@ -360,41 +390,50 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
       >
         <div className="h-48 overflow-hidden relative">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={isHovering ? currentHoverIndex : 0}
-              initial={{ opacity: 0, scale: isHovering ? 1 : 1.02 }}
-              animate={{ 
-                opacity: 1, 
-                scale: isClicked ? 1.05 : (isHovering ? 1.1 : 1),
-                transition: { duration: isClicked ? 0.15 : 0.5 }
-              }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0"
-            >
-              <ImagePlaceholder
-                title={`${project.title} - Preview ${isHovering ? currentHoverIndex + 1 : 1}`}
-                bgColor={
-                  isHovering ? 
-                    (currentHoverIndex === 0 
-                      ? project.bgColor
-                      : currentHoverIndex === 1 
-                        ? `bg-${project.bgColor.split('-')[1]}-500`
-                        : `bg-${project.bgColor.split('-')[1]}-800`)
-                    : project.bgColor
-                }
-                className="w-full h-full"
+            {displaySrc ? (
+              <motion.img
+                key={isHovering ? currentHoverIndex : 0}
+                src={displaySrc}
+                alt={displayAlt}
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ opacity: 0, scale: isHovering ? 1 : 1.02 }}
+                animate={{
+                  opacity: 1,
+                  scale: isClicked
+                    ? 1.05
+                    : isHovering
+                    ? 1.1
+                    : 1,
+                  transition: { duration: isClicked ? 0.15 : 0.5 },
+                }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
               />
-            </motion.div>
+            ) : (
+              <motion.div
+                key="placeholder"
+                className="absolute inset-0"
+                initial={{ opacity: 0, scale: 1.02 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <ImagePlaceholder
+                  title={project.title}
+                  bgColor={project.bgColor}
+                  className="w-full h-full"
+                />
+              </motion.div>
+            )}
           </AnimatePresence>
-          
-          {/* Small dots to indicate multiple images */}
+
+          {/* dot indicators */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1.5">
-            {[0, 1, 2].map((idx) => (
+            {Array.from({ length: totalHoverImages }).map((_, idx) => (
               <div
                 key={idx}
                 className={`h-1.5 w-1.5 rounded-full ${
-                  (isHovering && currentHoverIndex === idx)
+                  (isHovering ? currentHoverIndex : 0) === idx
                     ? "bg-primary"
                     : "bg-white/30"
                 }`}
@@ -402,6 +441,8 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             ))}
           </div>
         </div>
+
+        {/* copy / meta */}
         <CardHeader className="p-6 pb-4">
           <CardTitle className="text-xl">{project.title}</CardTitle>
           <CardDescription className="line-clamp-2">
@@ -409,12 +450,14 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
           </CardDescription>
         </CardHeader>
 
-        {/* let this grow to push footer down */}
         <CardContent className="flex-1 p-6 pt-0 space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <motion.div key={tech} whileHover={hoverVariants.badge.hover}>
-                <Badge variant="secondary" className="text-xs hover:bg-primary/10 transition-colors">
+                <Badge
+                  variant="secondary"
+                  className="text-xs hover:bg-primary/10 transition-colors"
+                >
                   {tech}
                 </Badge>
               </motion.div>
@@ -427,7 +470,11 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             <span>View Details</span>
             <motion.div
               initial={{ x: 0 }}
-              animate={isClicked ? { x: 10, transition: { duration: 0.15 } } : {}}
+              animate={
+                isClicked
+                  ? { x: 10, transition: { duration: 0.15 } }
+                  : {}
+              }
               whileHover={{ x: 5 }}
               className="group-hover:text-primary transition-colors"
             >
