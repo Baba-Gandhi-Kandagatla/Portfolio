@@ -92,7 +92,10 @@ export default function ProjectsSection() {
             <DialogContent className="max-w-xl sm:max-w-md md:max-w-xl w-[95%] max-h-[90vh] overflow-hidden">
               <DialogHeader className="pb-2">
                 <DialogTitle className="text-2xl font-bold">{selectedProject.title}</DialogTitle>
-                <DialogDescription className="text-accent">Project Details</DialogDescription>
+                { /* changed: use muted-foreground for better contrast in both themes */ }
+                <DialogDescription className="text-sm text-muted-foreground">
+                  Project Details
+                </DialogDescription>
               </DialogHeader>
               
               <ScrollArea className="max-h-[calc(90vh-10rem)] pr-4">
