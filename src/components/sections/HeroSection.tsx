@@ -172,7 +172,7 @@ export default function HeroSection() {
               >
                 {/* Replace with your image path */}
                 <Image 
-                  src="./profile.jpg" 
+                  src="/profile.jpg" 
                   alt="Profile"
                   width={500}
                   height={500}
