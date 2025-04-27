@@ -34,24 +34,26 @@ export default function ContactSection() {
             viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5 }}
           >
-            <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full">
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full">
-                    <Mail className="h-7 w-7 text-primary" />
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="block"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="bg-primary/10 p-4 rounded-full">
+                      <Mail className="h-7 w-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">Email</h3>
+                      <span className="text-base font-medium">{personalInfo.email}</span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Email</h3>
-                    <a 
-                      href={`mailto:${personalInfo.email}`} 
-                      className="text-base font-medium hover:text-primary transition-colors"
-                    >
-                      {personalInfo.email}
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </a>
           </motion.div>
 
           {/* Phone */}
@@ -61,24 +63,26 @@ export default function ContactSection() {
             viewport={{ once: true, margin: "-5%" }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full">
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="bg-primary/10 p-4 rounded-full">
-                    <Phone className="h-7 w-7 text-primary" />
+            <a
+              href={`tel:${personalInfo.phone}`}
+              className="block"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Card className="overflow-hidden border hover:border-primary/50 transition-all duration-300 h-full cursor-pointer">
+                <CardContent className="p-6">
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="bg-primary/10 p-4 rounded-full">
+                      <Phone className="h-7 w-7 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold mb-2">Phone</h3>
+                      <span className="text-base font-medium">{personalInfo.phone}</span>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">Phone</h3>
-                    <a 
-                      href={`tel:${personalInfo.phone}`}
-                      className="text-base font-medium hover:text-primary transition-colors"
-                    >
-                      {personalInfo.phone}
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </a>
           </motion.div>
 
           {/* Location */}
@@ -144,7 +148,7 @@ export default function ContactSection() {
           
           <div className="mt-8 bg-green-500/10 px-6 py-3 rounded-full inline-flex items-center">
             <Calendar className="h-5 w-5 text-green-500 mr-2" />
-            <span className="text-green-600 dark:text-green-400 font-medium">Available for new projects</span>
+            <span className="text-green-600 dark:text-green-400 font-medium">Exploring internship and career opportunities in AI and Full Stack Development</span>
           </div>
         </motion.div>
       </div>

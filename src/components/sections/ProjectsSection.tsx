@@ -347,23 +347,10 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-5%" }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={hoverVariants.lift.hover}
-      whileTap={hoverVariants.lift.tap}
-      animate={isClicked ? {
-        scale: 0.97,
-        y: 0,
-        boxShadow: "0 5px 15px rgba(var(--primary) / 0.3)",
-        transition: { duration: 0.15 }
-      } : {}}
-      className="h-full"
-    >
-      <Card 
-        className="overflow-hidden h-full border cursor-pointer group transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
+    <motion.div>
+      <Card
+        // make card a column container so footer sticks to bottom
+        className="flex flex-col overflow-hidden h-full border cursor-pointer group transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10"
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -418,7 +405,9 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             {project.idea}
           </CardDescription>
         </CardHeader>
-        <CardContent className="p-6 pt-0 space-y-4">
+
+        {/* let this grow to push footer down */}
+        <CardContent className="flex-1 p-6 pt-0 space-y-4">
           <div className="flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <motion.div key={tech} whileHover={hoverVariants.badge.hover}>
@@ -429,6 +418,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             ))}
           </div>
         </CardContent>
+
         <CardFooter className="p-6 border-t bg-muted/10">
           <div className="flex items-center text-sm text-muted-foreground w-full justify-between">
             <span>View Details</span>

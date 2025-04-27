@@ -192,17 +192,10 @@ export const achievements: Achievement[] = [
 
 export const leadership = [
   {
-    id: "mentoring",
-    title: "Student Mentor",
-    organization: "KMIT",
-    duration: "2023-Present",
-    description: "Mentor junior students in programming and AI/ML projects, organizing workshops and hands-on sessions."
-  },
-  {
     id: "streetcause",
     title: "Community Outreach Volunteer",
     organization: "StreetCause KMIT",
-    duration: "2022-Present",
+    duration: "2023-Present",
     description: "Mentored 70 students and raised funds equivalent to 50 passes for village adoption projects near Bhadrachalam."
   },
   {
@@ -215,8 +208,8 @@ export const leadership = [
   {
     id: "community-outreach",
     title: "Volunteer",
-    organization: "StreetCause",
+    organization: "StreetCause KMIT",
     duration: "2022-Present",
-    description: "Participated in community service projects, including educational initiatives for underprivileged children."
+    description: "Participated in community service projects such as educational programs for underprivileged children and food distribution drives for the needy."
   }
 ];
