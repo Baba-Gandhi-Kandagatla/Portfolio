@@ -40,14 +40,13 @@ export const personalInfo = {
   links: {
     github: "https://github.com/Baba-Gandhi-Kandagatla",
     linkedin: "https://www.linkedin.com/in/baba-gandhi-kandagatla",
-    portfolio: "https://baba-gandhi-kandagatla.github.io/Portfolio/"
   },
   education: [
     {
       institution: "Keshav Memorial Institute of Technology",
       degree: "B.Tech in Computer Science Engineering (AI/ML)",
       duration: "2022-2026 (Expected)",
-      gpa: "8.4/10.0",
+      gpa: "8.21/10.0",
       courses: [
         "Natural Language Processing",
         "Database Management",
@@ -57,15 +56,15 @@ export const personalInfo = {
     },
     {
       institution: "Sri Chaitanya Junior College Prathiba branch",
-      degree: "Intermediate (10+2)",
+      degree: "Intermediate (12th)",
       duration: "2020-2022",
-      gpa: "885/100"
+      gpa: "885/1000"
     },
     {
       institution: "Sri Chaitanya School",
       degree: "Secondary School Certificate (10th)",
       duration: "2019-2020",
-      gpa: "10/10.0"
+      gpa: "10/10"
     }
   ]
 };
@@ -73,11 +72,11 @@ export const personalInfo = {
 export const skills: Skill[] = [
   {
     category: "Programming Languages",
-    items: ["Java", "Python", "C", "C++", "JavaScript", "TypeScript", "R"]
+    items: ["Python", "Java", "C", "C++", "JavaScript", "TypeScript"]
   },
   {
     category: "Web Technologies",
-    items: ["MERN Stack", "React.js", "Next.js", "Node.js", "Express.js", "Flask", "FastAPI", "HTML5", "CSS3", "Tailwind CSS", "Material UI", "Redux"]
+    items: ["React.js", "Next.js", "Node.js", "Express.js", "Flask", "FastAPI", "HTML5", "CSS", "Tailwind CSS", "Material UI", "Bootstrap", "REST APIs"]
   },
   {
     category: "Data Science & ML",
@@ -85,15 +84,15 @@ export const skills: Skill[] = [
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS (EC2, Lambda, S3)", "GCP", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "GitHub Actions"]
+    items: ["AWS (EC2, Lambda, S3)", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "GitHub Actions"]
   },
   {
     category: "Databases",
-    items: ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Redis"]
+    items: ["MongoDB", "PostgreSQL", "MySQL", "Redis"]
   },
   {
     category: "Tools",
-    items: ["VS Code", "Git", "GitHub", "PyCharm", "Maven"]
+    items: ["VS Code", "Git", "GitHub", "PyCharm", "Maven", "Jupyter Notebook", "Anaconda", "Postman", "IntelliJ IDEA", "Eclipse"]
   }
 ];
 
@@ -101,28 +100,21 @@ export const experiences: Experience[] = [
   {
     id: "skillsage-ai",
     title: "Backend Developer - AI-Based Mock Interviews",
-    organization: "SkillSage Projects",
-    duration: "Feb 2025 - Present",
-    description: "Joined as Backend Developer in a team of 4 and integrated voice-based features into the frontend. Engineered AI-driven mock interviews using student data; currently under testing with a corporate partner."
-  },
-  {
-    id: "skillsage-webos",
-    title: "Developer - Interactive Web OS App Extension",
-    organization: "SkillSage Projects",
-    duration: "Mar 2024 - Apr 2024",
-    description: "Developed a visual student-data display for large monitors (e.g., LG TVs) in a 2-week sprint; awaiting full database integration for complete deployment."
+    organization: "KMIT",
+    duration: "May 2024 - Apr 2025",
+    description: "Joined as Backend Developer in a team of 4 and integrated voice-based features into the frontend. Engineered real time AI-driven mock interviews using student data."
   },
   {
     id: "results-automation",
     title: "Full-Stack Developer",
-    organization: "Results Automation System",
+    organization: "NGIT, KMEC, KMCE",
     duration: "Sep 2023 - Dec 2023",
     description: "Automated exam result processing, reducing turnaround time from 3 days to 1 minute. Currently implemented in examination branches at three colleges (NGIT, KMEC, KMCE)."
   },
   {
     id: "physics-lab",
     title: "Web Developer",
-    organization: "Physics Virtual Lab",
+    organization: "KMIT",
     duration: "Sep 2023 - Dec 2023",
     description: "Designed a lab simulation tool for physics experiments and student revision; deployed in January 2023 as part of a team of 3 developers."
   }
@@ -130,52 +122,70 @@ export const experiences: Experience[] = [
 
 export const achievements: Achievement[] = [
   {
-    id: "hackathon-enginerd",
-    title: "1st Prize in Enginerd Hackathon at KMIT",
-    description: "Won first place for developing an innovative AI-assisted learning platform with personalized study plans.",
-    date: "March 2024"
+    id: "hackathon-tworks",
+    title: "Top 15 in Hackathon (t-works, MGIT)",
+    description: "Selected among the top 15 teams.",
+    date: "May 2025"
   },
   {
-    id: "hackathon-xcelerate",
-    title: "Finalist in HackXcelerate Hackathon",
-    description: "Selected among the top 5 teams for creating a health monitoring system using wearable technology.",
-    date: "November 2023"
+    id: "hackathon-bvrit",
+    title: "Top 10 in Hackathon (BVRIT)",
+    description: "Secured a top 10 position.",
+    date: "Apr 2025"
   },
   {
-    id: "hackathon-top10",
-    title: "Top 10 in National AI Challenge at BVRIT",
-    description: "Recognized for developing a novel approach to predictive analytics in healthcare using machine learning.",
-    date: "July 2023"
+    id: "hackathon-hackxcelerate",
+    title: "Finalist in HackXcelerate Hackathon (Microsoft & Bytexl at CBIT)",
+    description: "Awarded a certificate of participation.",
+    date: "Apr 2024"
   },
   {
-    id: "hackathon-top15",
-    title: "Top 15 in Hackathon at t-works, MGIT",
-    description: "Selected among the top 15 teams for innovative technical solution.",
-    date: "May 2023"
+    id: "hackathon-enginerd-kmit",
+    title: "1st Prize in Enginerd Hackathon (KMIT)",
+    description: "Awarded for Software & Physics Categories.",
+    date: "Aug 2023"
   },
   {
-    id: "ieee-award",
+    id: "hackathon-ieee",
     title: "IEEE Hackathon Award",
-    description: "Received recognition for outstanding technical implementation in a sustainable technology project.",
-    date: "April 2023"
+    description: "Certificate of participation and appreciation from IEEE for winning a hackathon at Muffakham Jah College of Engineering and Technology (2nd year, 1st semester).",
+    date: "Aug 2023"
   },
   {
-    id: "iqac-recognition",
-    title: "IQAC Letter of Appreciation",
-    description: "Recognized by the Internal Quality Assurance Cell for contributions to educational technology development.",
-    date: "February 2023"
+    id: "olympiad-chat",
+    title: "Winner in CHAT Olympiad (Chemistry Exam)",
+    description: "Achieved first place in the national chemistry exam.",
+    date: "Jan 2020"
   },
   {
-    id: "media-feature",
-    title: "The Hindu Feature",
-    description: "Featured in The Hindu newspaper for innovative technology solutions addressing educational challenges.",
-    date: "December 2022"
+    id: "recognition-result-automation",
+    title: "IQAC Recognition: Result Automation System",
+    description: "Letter of appreciation for developing the Result Automation System (college portal project).",
+    date: "Aug 2023"
   },
   {
-    id: "certificates",
-    title: "Certificates of Appreciation",
-    description: "Received certificates of appreciation from Saksham Telangana & Streetcause Hyderabad for community initiatives.",
-    date: "2023"
+    id: "recognition-virtual-lab",
+    title: "IQAC Recognition: Physics Virtual Lab",
+    description: "Letter of appreciation for developing the Physics Virtual Lab.",
+    date: "Aug 2023"
+  },
+  {
+    id: "media-the-hindu",
+    title: "Media Recognition: Featured in The Hindu",
+    description: "Featured with photos highlighting contributions to the Streetcause project (village adoption and community support).",
+    date: "Jan 2024"
+  },
+  {
+    id: "community-saksham",
+    title: "NSS & Community Service: Saksham Telangana",
+    description: "Certificate of Appreciation from Saksham Telangana for contributions at the 'Divyang Sammelana' event.",
+    date: "Apr 2024"
+  },
+  {
+    id: "community-streetcause",
+    title: "NSS & Community Service: Streetcause Hyderabad",
+    description: "Certificate of Service for the 2023-2024 tenure.",
+    date: "Jul 2024"
   }
 ];
 
