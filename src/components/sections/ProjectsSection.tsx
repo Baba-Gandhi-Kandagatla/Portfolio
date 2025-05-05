@@ -341,6 +341,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   const [isHovering, setIsHovering] = useState(false);
   const [currentHoverIndex, setCurrentHoverIndex] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
+  const isTransitioning = useRef(false);
 
   const totalHoverImages =
     project.images && project.images.length > 0 ? project.images.length : 3;
@@ -356,19 +357,53 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
 
   /* ------------ hover handlers ------------ */
   const handleMouseEnter = () => {
-    setIsHovering(true);
-    hoverTimerRef.current = setInterval(() => {
-      setCurrentHoverIndex((prev) => (prev + 1) % totalHoverImages);
-    }, 1200);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
+    // Clear any existing timers first to prevent multiple timers
     if (hoverTimerRef.current) {
       clearInterval(hoverTimerRef.current);
       hoverTimerRef.current = null;
     }
-    setCurrentHoverIndex(0);
+    
+    setIsHovering(true);
+    
+    // Start a new timer with a delay to avoid immediate image change
+    setTimeout(() => {
+      hoverTimerRef.current = setInterval(() => {
+        // Only change the image if we're not in the middle of a transition
+        if (!isTransitioning.current) {
+          isTransitioning.current = true;
+          setCurrentHoverIndex((prev) => {
+            const nextIndex = (prev + 1) % totalHoverImages;
+            return nextIndex;
+          });
+          
+          // Reset the transition flag after the animation completes
+          setTimeout(() => {
+            isTransitioning.current = false;
+          }, 600); // This should be longer than the animation duration
+        }
+      }, 2000); // Increased interval for smoother rotation
+    }, 500); // Small delay before starting rotation
+  };
+
+  const handleMouseLeave = () => {
+    // Immediately stop hovering state
+    setIsHovering(false);
+    
+    // Clear any active interval timers
+    if (hoverTimerRef.current) {
+      clearInterval(hoverTimerRef.current);
+      hoverTimerRef.current = null;
+    }
+    
+    // Mark that we're no longer in a transition
+    isTransitioning.current = false;
+    
+    // Reset the index after the exit animation completes
+    setTimeout(() => {
+      if (!isHovering) { // Double check we're still not hovering
+        setCurrentHoverIndex(0);
+      }
+    }, 300);
   };
 
   const handleClick = () => {
@@ -389,10 +424,10 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         onMouseLeave={handleMouseLeave}
       >
         <div className="h-48 overflow-hidden relative bg-muted/20">
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode={isHovering ? "wait" : "sync"}>
             {displaySrc ? (
               <motion.img
-                key={isHovering ? currentHoverIndex : 0}
+                key={`${isHovering ? "hover" : "static"}-${currentHoverIndex}`}
                 src={displaySrc}
                 alt={displayAlt}
                 className="absolute inset-0 w-full h-full object-contain bg-white/5 backdrop-blur-sm p-2"
@@ -404,10 +439,16 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
                     : isHovering
                     ? 1.05
                     : 1,
-                  transition: { duration: isClicked ? 0.15 : 0.5 },
+                  transition: { 
+                    duration: isClicked ? 0.15 : 0.5,
+                    ease: "easeOut" 
+                  },
                 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
+                exit={isHovering ? { 
+                  opacity: 0,
+                  transition: { duration: 0.3 } 
+                } : { opacity: 0, transition: { duration: 0 } }}
+                transition={{ duration: 0.5 }}
               />
             ) : (
               <motion.div
@@ -432,7 +473,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
             {Array.from({ length: totalHoverImages }).map((_, idx) => (
               <div
                 key={idx}
-                className={`h-1.5 w-1.5 rounded-full ${
+                className={`h-1.5 w-1.5 rounded-full transition-duration-300 ${
                   (isHovering ? currentHoverIndex : 0) === idx
                     ? "bg-primary"
                     : "bg-white/30"
