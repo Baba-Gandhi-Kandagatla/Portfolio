@@ -135,7 +135,12 @@ export default function ProjectsSection() {
                               alt={`${selectedProject.imageAlt} (Preview ${
                                 currentImageIndex + 1
                               })`}
-                              className="w-full h-full object-cover"
+                              className={`w-full h-full ${
+                                selectedProject.id === "birthday-app" || 
+                                selectedProject.id === "telegram-assistant"
+                                  ? "object-contain bg-gray-50 dark:bg-gray-900/50" 
+                                  : "object-cover"
+                              }`}
                             />
                           ) : (
                             <ImagePlaceholder
@@ -342,6 +347,9 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   const [currentHoverIndex, setCurrentHoverIndex] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
 
+  // Check if this project has mobile screenshots (usually taller than wide)
+  const isMobileScreenshot = project.id === "birthday-app" || project.id === "telegram-assistant";
+
   const totalHoverImages =
     project.images && project.images.length > 0 ? project.images.length : 3;
 
@@ -359,7 +367,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
     setIsHovering(true);
     hoverTimerRef.current = setInterval(() => {
       setCurrentHoverIndex((prev) => (prev + 1) % totalHoverImages);
-    }, 1200);
+    }, 2000);
   };
 
   const handleMouseLeave = () => {
@@ -395,7 +403,11 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
                 key={isHovering ? currentHoverIndex : 0}
                 src={displaySrc}
                 alt={displayAlt}
-                className="absolute inset-0 w-full h-full object-cover"
+                className={`absolute inset-0 w-full h-full ${
+                  isMobileScreenshot 
+                    ? "object-contain bg-gray-50 dark:bg-gray-900/50 p-2" 
+                    : "object-cover"
+                }`}
                 initial={{ opacity: 0, scale: isHovering ? 1 : 1.02 }}
                 animate={{
                   opacity: 1,
