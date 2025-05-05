@@ -135,12 +135,7 @@ export default function ProjectsSection() {
                               alt={`${selectedProject.imageAlt} (Preview ${
                                 currentImageIndex + 1
                               })`}
-                              className={`w-full h-full ${
-                                selectedProject.id === "birthday-app" || 
-                                selectedProject.id === "telegram-assistant"
-                                  ? "object-contain bg-gray-50 dark:bg-gray-900/50" 
-                                  : "object-cover"
-                              }`}
+                              className="w-full h-full object-contain bg-white/5 backdrop-blur-sm p-2"
                             />
                           ) : (
                             <ImagePlaceholder
@@ -347,9 +342,6 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
   const [currentHoverIndex, setCurrentHoverIndex] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
 
-  // Check if this project has mobile screenshots (usually taller than wide)
-  const isMobileScreenshot = project.id === "birthday-app" || project.id === "telegram-assistant";
-
   const totalHoverImages =
     project.images && project.images.length > 0 ? project.images.length : 3;
 
@@ -367,7 +359,7 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
     setIsHovering(true);
     hoverTimerRef.current = setInterval(() => {
       setCurrentHoverIndex((prev) => (prev + 1) % totalHoverImages);
-    }, 2000);
+    }, 1200);
   };
 
   const handleMouseLeave = () => {
@@ -396,25 +388,21 @@ function ProjectCard({ project, index, onClick }: ProjectCardProps) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className="h-48 overflow-hidden relative">
+        <div className="h-48 overflow-hidden relative bg-muted/20">
           <AnimatePresence mode="wait">
             {displaySrc ? (
               <motion.img
                 key={isHovering ? currentHoverIndex : 0}
                 src={displaySrc}
                 alt={displayAlt}
-                className={`absolute inset-0 w-full h-full ${
-                  isMobileScreenshot 
-                    ? "object-contain bg-gray-50 dark:bg-gray-900/50 p-2" 
-                    : "object-cover"
-                }`}
+                className="absolute inset-0 w-full h-full object-contain bg-white/5 backdrop-blur-sm p-2"
                 initial={{ opacity: 0, scale: isHovering ? 1 : 1.02 }}
                 animate={{
                   opacity: 1,
                   scale: isClicked
                     ? 1.05
                     : isHovering
-                    ? 1.1
+                    ? 1.05
                     : 1,
                   transition: { duration: isClicked ? 0.15 : 0.5 },
                 }}
