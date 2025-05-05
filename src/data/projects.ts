@@ -76,21 +76,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: "lms-prototype",
-    title: "LMS System Prototype",
-    idea: "An LMS prototype with features like PDFs, videos, assessments, and quizzes organized by topics and units.",
-    techStack: ["MERN"],
-    innovation: "Comprehensive learning management system developed within the constraints of a hackathon.",
-    impact: "Provides a foundation for a full-fledged LMS, demonstrating rapid prototyping skills.",
-    bgColor: "bg-teal-500",
-    imageUrl: "/imgs/projects/lms-prototype/1.png",
-    imageAlt: "LMS System Dashboard",
-    images: [
-      "/imgs/projects/lms-prototype/1.png",
-      "/imgs/projects/lms-prototype/2.png",
-    ]
-  },
-  {
     id: "skillsage",
     title: "SkillSage - Mock Interview System",
     idea: "A scalable mock interview system for students, tailored to resumes and dynamically adapting based on interviewee responses.",
@@ -119,21 +104,6 @@ export const projects: Project[] = [
     images: [
       "/imgs/projects/system-compromise/1.png",
       "/imgs/projects/system-compromise/2.png",
-    ]
-  },
-  {
-    id: "amazon-api",
-    title: "Amazon Product Advertising API Integration",
-    idea: "Developed an API connection to the Amazon Product Advertising API for a freelance project.",
-    techStack: ["AMAZON PAAPI", "PYTHON FLASK"],
-    innovation: "Efficient integration of complex e-commerce API for product data retrieval.",
-    impact: "Successfully completed the project, earning ₹4,000 and gaining practical experience in API integration.",
-    bgColor: "bg-orange-500",
-    imageUrl: "/imgs/projects/amazon-api/1.png",
-    imageAlt: "Amazon API Integration Dashboard",
-    images: [
-      "/imgs/projects/amazon-api/1.png",
-      "/imgs/projects/amazon-api/2.png",
     ]
   },
   {
