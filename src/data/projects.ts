@@ -24,6 +24,7 @@ export const projects: Project[] = [
     imageUrl: "./imgs/projects/skillsage/0.png",
     imageAlt: "SkillSage Mock Interview Session",
     images: [
+      "./imgs/projects/skillsage/0.png",
       "./imgs/projects/skillsage/1.png",
       "./imgs/projects/skillsage/2.png",
       "./imgs/projects/skillsage/3.png",
