@@ -13,6 +13,39 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+   {
+    id: "skillsage",
+    title: "SkillSage - Mock Interview System",
+    idea: "A scalable mock interview system for students, tailored to resumes and dynamically adapting based on interviewee responses.",
+    techStack: ["React", "Node", "Express", "PostgreSQL", "Docker"],
+    innovation: "Supports real-time, personalized interviews at scale, helping colleges automate and improve their interview processes.",
+    impact: "Enables efficient interview preparation for over 300 students simultaneously, with detailed analytics on individual performance, improving overall interview readiness by 40%.",
+    bgColor: "bg-blue-500",
+    imageUrl: "./imgs/projects/skillsage/0.png",
+    imageAlt: "SkillSage Mock Interview Session",
+    images: [
+      "./imgs/projects/skillsage/1.png",
+      "./imgs/projects/skillsage/2.png",
+      "./imgs/projects/skillsage/3.png",
+      "./imgs/projects/skillsage/4.png",
+      "./imgs/projects/skillsage/5.png",
+      "./imgs/projects/skillsage/6.png",
+      "./imgs/projects/skillsage/7.png",
+      "./imgs/projects/skillsage/8.png",
+      "./imgs/projects/skillsage/9.png",
+      "./imgs/projects/skillsage/10.png",
+      "./imgs/projects/skillsage/11.png",
+      "./imgs/projects/skillsage/12.png",
+      "./imgs/projects/skillsage/13.png",
+      "./imgs/projects/skillsage/14.png",
+      "./imgs/projects/skillsage/15.png",
+      "./imgs/projects/skillsage/16.png",
+      "./imgs/projects/skillsage/17.png",
+      "./imgs/projects/skillsage/18.png",
+      "./imgs/projects/skillsage/19.png",
+      "./imgs/projects/skillsage/20.png",
+    ]
+  },
   {
     id: "skill-forge",
     title: "Skill Forge",
@@ -89,22 +122,6 @@ export const projects: Project[] = [
     images: [
       "./imgs/projects/quiz-generator/1.png",
       "./imgs/projects/quiz-generator/2.png",
-    ]
-  },
-  {
-    id: "skillsage",
-    title: "SkillSage - Mock Interview System",
-    idea: "A scalable mock interview system for students, tailored to resumes and dynamically adapting based on interviewee responses.",
-    techStack: ["React", "Node", "Express", "PostgreSQL", "Docker"],
-    innovation: "Supports real-time, personalized interviews at scale, helping colleges automate and improve their interview processes.",
-    impact: "Enables efficient interview preparation for over 300 students simultaneously, with detailed analytics on individual performance, improving overall interview readiness by 40%.",
-    bgColor: "bg-blue-500",
-    imageUrl: "/imgs/projects/skillsage/1.png",
-    imageAlt: "SkillSage Mock Interview Session",
-    images: [
-      "/imgs/projects/skillsage/1.png",
-      "/imgs/projects/skillsage/2.png",
-      "/imgs/projects/skillsage/3.png",
     ]
   },
   {

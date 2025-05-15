@@ -3,7 +3,7 @@ from PIL import Image
 from datetime import datetime
 
 # Path to your folder containing the images
-folder_path = 'ou-grade-retrieval'
+folder_path = 'skillsage'
 
 # Get a sorted list of files in the folder based on modification time
 image_files = sorted(
