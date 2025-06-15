@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Phone, Calendar } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, Calendar, Download, FileText } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { personalInfo } from "@/data/personal-info";
 
@@ -110,8 +110,7 @@ export default function ContactSection() {
           </motion.div>
 
         </div>
-        
-        {/* Social Links */}
+          {/* Social Links */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -120,7 +119,7 @@ export default function ContactSection() {
           className="mt-12 flex flex-col items-center"
         >
           <h3 className="text-xl font-semibold mb-6">Connect With Me</h3>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap gap-6 justify-center">
             <motion.a
               href={personalInfo.links.github}
               target="_blank" 
@@ -143,6 +142,83 @@ export default function ContactSection() {
             >
               <Linkedin className="h-6 w-6" />
               <span className="font-medium">LinkedIn</span>
+            </motion.a>
+            
+            {/* Resume Download Button with unique animation */}
+            <motion.a
+              href="./resume.pdf"
+              download="Baba_Gandhi_Kandagatla_Resume.pdf"
+              whileHover={{ 
+                y: -5, 
+                scale: 1.1,
+                boxShadow: "0 10px 30px rgba(59, 130, 246, 0.3)"
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="relative bg-gradient-to-r from-primary/20 to-accent/20 hover:from-primary/30 hover:to-accent/30 p-4 rounded-full flex items-center gap-3 transition-all duration-300 overflow-hidden group border border-primary/30"
+            >
+              {/* Animated background pulse */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ 
+                  duration: 3, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              
+              {/* Content */}
+              <div className="relative z-10 flex items-center gap-3">
+                <motion.div
+                  className="relative"
+                  animate={{ 
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <FileText className="h-6 w-6 text-primary" />
+                  {/* Floating sparkle */}
+                  <motion.div
+                    className="absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full"
+                    animate={{ 
+                      scale: [0, 1, 0],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      delay: 1
+                    }}
+                  />
+                </motion.div>
+                <span className="font-medium text-primary">Resume</span>
+                <motion.div
+                  animate={{ 
+                    y: [0, -3, 0]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <Download className="h-5 w-5 text-primary" />
+                </motion.div>
+              </div>
+              
+              {/* Shimmer effect on hover */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full"
+                whileHover={{ x: "200%" }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              />
             </motion.a>
           </div>
           

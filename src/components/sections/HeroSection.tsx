@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Mail, Download, FileText } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { personalInfo } from "@/data/personal-info";
@@ -56,9 +56,7 @@ export default function HeroSection() {
               transition={{ duration: 0.7, delay: 0.2 }}
             >
               {personalInfo.summary}
-            </motion.p>
-
-            <motion.div 
+            </motion.p>            <motion.div 
               className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,6 +72,193 @@ export default function HeroSection() {
                   View Projects <ArrowRight className="h-4 w-4" />
                 </motion.a>
               </Button>
+                {/* Enhanced Animated Resume Download Button */}
+              <motion.a
+                href="./resume.pdf"
+                download="Baba_Gandhi_Kandagatla_Resume.pdf"
+                className="relative group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="relative overflow-hidden border-primary/50 hover:border-primary bg-gradient-to-r from-primary/10 to-accent/10 hover:from-primary/20 hover:to-accent/20 transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
+                  {/* Multi-layered animated background */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20"
+                    initial={{ x: "-100%" }}
+                    whileHover={{ x: "100%" }}
+                    transition={{ duration: 0.6, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Secondary shimmer effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                    initial={{ x: "-100%", opacity: 0 }}
+                    animate={{ x: "100%", opacity: [0, 1, 0] }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      repeatDelay: 5,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  {/* Pulsing border effect */}
+                  <motion.div
+                    className="absolute inset-0 rounded-md border-2 border-primary/30"
+                    animate={{ 
+                      opacity: [0.3, 0.8, 0.3],
+                      scale: [1, 1.02, 1]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                  
+                  {/* Content */}
+                  <div className="relative flex items-center gap-2 z-10">
+                    <motion.div
+                      animate={{ 
+                        rotate: [0, 10, -10, 0],
+                      }}
+                      transition={{ 
+                        duration: 2, 
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <FileText className="h-4 w-4" />
+                    </motion.div>
+                    
+                    <motion.span
+                      className="font-medium"
+                      whileHover={{ 
+                        backgroundImage: "linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)))",
+                        backgroundClip: "text",
+                        color: "transparent"
+                      }}
+                    >
+                      Download Resume
+                    </motion.span>
+                    
+                    <motion.div
+                      animate={{ 
+                        y: [0, -3, 0],
+                      }}
+                      transition={{ 
+                        duration: 1.5, 
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut"
+                      }}
+                    >
+                      <Download className="h-4 w-4" />
+                    </motion.div>
+                  </div>
+                  
+                  {/* Enhanced sparkle effects */}
+                  <motion.div
+                    className="absolute top-2 right-3 w-2 h-2 bg-primary rounded-full"
+                    animate={{ 
+                      opacity: [0, 1, 0],
+                      scale: [0, 1.2, 0],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      delay: 0.5
+                    }}
+                  />
+                  <motion.div
+                    className="absolute bottom-2 left-3 w-1.5 h-1.5 bg-accent rounded-full"
+                    animate={{ 
+                      opacity: [0, 1, 0],
+                      scale: [0, 1.5, 0],
+                      rotate: [0, -180, -360]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      delay: 1
+                    }}
+                  />
+                  <motion.div
+                    className="absolute top-1/2 left-1 w-1 h-1 bg-primary/60 rounded-full"
+                    animate={{ 
+                      opacity: [0, 0.8, 0],
+                      scale: [0, 1, 0],
+                      x: [0, 4, 0]
+                    }}
+                    transition={{ 
+                      duration: 1.8, 
+                      repeat: Infinity,
+                      delay: 1.5
+                    }}
+                  />
+                  
+                  {/* Floating particles on hover */}
+                  <motion.div
+                    className="absolute inset-0 pointer-events-none"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  >
+                    {[...Array(6)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute w-1 h-1 bg-primary/40 rounded-full"
+                        style={{
+                          top: `${20 + i * 10}%`,
+                          left: `${15 + i * 12}%`,
+                        }}
+                        animate={{
+                          y: [0, -20, 0],
+                          opacity: [0, 0.8, 0],
+                          scale: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          delay: i * 0.2,
+                          ease: "easeOut"
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                  
+                  {/* Success checkmark animation */}
+                  <motion.div
+                    className="absolute inset-0 flex items-center justify-center bg-green-500/20 rounded-md opacity-0"
+                    initial={{ opacity: 0, scale: 0 }}
+                    whileTap={{ 
+                      opacity: [0, 1, 0], 
+                      scale: [0, 1.1, 1],
+                    }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    <motion.div
+                      className="w-6 h-6 border-2 border-green-500 rounded-full flex items-center justify-center"
+                      initial={{ rotate: 0 }}
+                      whileTap={{ rotate: 360 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <motion.div
+                        className="w-2 h-1 border-b-2 border-r-2 border-green-500 transform rotate-45"
+                        initial={{ scale: 0 }}
+                        whileTap={{ scale: 1 }}
+                        transition={{ delay: 0.2, duration: 0.2 }}
+                      />
+                    </motion.div>
+                  </motion.div>
+                </Button>
+              </motion.a>
+              
               <Button asChild variant="outline" size="lg">
                 <motion.a 
                   href="#contact"

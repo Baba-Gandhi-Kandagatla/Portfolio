@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ui/theme-toggle";
 
@@ -61,10 +61,28 @@ export default function Navigation() {
           {navItems.map((item) => (
             <NavLink key={item.name} item={item} />
           ))}
-        </nav>
-
-        {/* Theme Toggle and Mobile Menu Button */}
+        </nav>        {/* Theme Toggle, Resume Button and Mobile Menu Button */}
         <div className="flex items-center space-x-4">
+          {/* Resume Download Button for Desktop */}
+          <motion.a
+            href="./resume.pdf"
+            download="Baba_Gandhi_Kandagatla_Resume.pdf"
+            className="hidden md:flex items-center gap-2 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/30 rounded-full transition-all duration-300 text-sm font-medium"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 4px 20px rgba(59, 130, 246, 0.2)"
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.div
+              animate={{ y: [0, -1, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Download className="h-4 w-4" />
+            </motion.div>
+            Resume
+          </motion.a>
+          
           <ThemeToggle />
           
           <motion.button
@@ -92,8 +110,7 @@ export default function Navigation() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
             className="md:hidden bg-background/95 backdrop-blur-md shadow-lg"
-          >
-            <nav className="flex flex-col p-4 space-y-4">
+          >            <nav className="flex flex-col p-4 space-y-4">
               {navItems.map((item) => (
                 <motion.a
                   key={item.name}
@@ -109,6 +126,27 @@ export default function Navigation() {
                   {item.name}
                 </motion.a>
               ))}
+              
+              {/* Mobile Resume Download Button */}
+              <motion.a
+                href="./resume.pdf"
+                download="Baba_Gandhi_Kandagatla_Resume.pdf"
+                className="flex items-center gap-3 px-4 py-3 mx-2 mt-4 bg-primary/10 text-primary border border-primary/30 rounded-lg transition-all duration-300 font-medium"
+                whileHover={{ 
+                  x: 5,
+                  backgroundColor: "rgb(var(--primary) / 0.2)",
+                  transition: { duration: 0.3, ease: "easeOut" }
+                }}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <motion.div
+                  animate={{ y: [0, -1, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Download className="h-5 w-5" />
+                </motion.div>
+                Download Resume
+              </motion.a>
             </nav>
           </motion.div>
         )}
