@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, Briefcase, Calendar, Users } from "lucide-react";
+import { Award, Briefcase, Calendar, Users, FileText } from "lucide-react";
 import { 
   Card, 
   CardContent,
@@ -18,9 +18,11 @@ import {
 import { 
   achievements, 
   experiences, 
-  leadership 
+  leadership,
+  patents 
 } from "@/data/personal-info";
 import { hoverVariants } from "@/lib/animations";
+import { PatentCard } from "@/components/ui/PatentTab";
 
 export default function ExperienceSection() {
   return (
@@ -41,10 +43,11 @@ export default function ExperienceSection() {
         </motion.div>
 
         <Tabs defaultValue="experience" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="grid w-full grid-cols-4 mb-8">
             <TabsTrigger value="experience">Experience</TabsTrigger>
             <TabsTrigger value="achievements">Achievements</TabsTrigger>
             <TabsTrigger value="leadership">Leadership</TabsTrigger>
+            <TabsTrigger value="patents">Patents</TabsTrigger>
           </TabsList>
           
           <TabsContent value="experience" className="mt-0">
@@ -107,6 +110,24 @@ export default function ExperienceSection() {
                 </motion.div>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="patents" className="mt-0">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {patents.map((patent, index) => (
+                <PatentCard 
+                  key={patent.id} 
+                  patent={patent} 
+                  index={index} 
+                />
+              ))}
+            </div>
+            {patents.length === 0 && (
+              <div className="text-center py-12">
+                <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                <p className="text-muted-foreground">No patents available at the moment.</p>
+              </div>
+            )}
           </TabsContent>
         </Tabs>
       </div>

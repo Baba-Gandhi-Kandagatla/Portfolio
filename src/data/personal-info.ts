@@ -30,6 +30,20 @@ export interface Course {
   name: string;
 }
 
+export interface Patent {
+  id: string;
+  title: string;
+  applicationNumber: string;
+  publicationNumber: string;
+  filingDate: string;
+  publicationDate: string;
+  applicationAuthority: string;
+  inventors: string[];
+  applicant: string;
+  abstract: string;
+  status: string;
+}
+
 export const personalInfo = {
   name: "Baba Gandhi Kandagatla",
   title: "AI/ML Engineer and Full-Stack Developer",
@@ -122,10 +136,22 @@ export const experiences: Experience[] = [
 
 export const achievements: Achievement[] = [
   {
+    id: "patent-breast-cancer",
+    title: "Patent Published: Breast Cancer Classification & Segmentation with 3D Visualization",
+    description: "Published patent for an AI-based system that classifies and segments breast cancer masses in ultrasound imagery with VR visualization for medical training and diagnosis.",
+    date: "Jun 2025"
+  },
+  {
     id: "hackathon-tworks",
     title: "Top 15 in Hackathon (t-works, MGIT)",
     description: "Selected among the top 15 teams.",
     date: "May 2025"
+  },
+    {
+    id: "utkrishti-puraskar",
+    title: "KMIT's Utkrishti Puraskar",
+    description: "Recognized for outstanding achievements during KMIT's Awards Day.",
+    date: "Mar 2025"
   },
   {
     id: "hackathon-bvrit",
@@ -143,6 +169,12 @@ export const achievements: Achievement[] = [
     id: "hackathon-enginerd-kmit",
     title: "1st Prize in Enginerd Hackathon (KMIT)",
     description: "Awarded for Software & Physics Categories.",
+    date: "Aug 2023"
+  },
+  {
+    id: "hackathon-Mjcet",
+    title: "1st Prize in Enginerd Hackathon (MJCET College of Engineering)",
+    description: "Awarded first prize in the hackathon.",
     date: "Aug 2023"
   },
   {
@@ -211,5 +243,29 @@ export const leadership = [
     organization: "StreetCause KMIT",
     duration: "2022-Present",
     description: "Participated in community service projects such as educational programs for underprivileged children and food distribution drives for the needy."
+  }
+];
+
+export const patents: Patent[] = [
+  {
+    id: "breast-cancer-classification",
+    title: "Classification & segmentation of breast cancer mass in ultrasound Imagery/Video with 3D visualization",
+    applicationNumber: "202541059395 A",
+    publicationNumber: "62410",
+    filingDate: "20/06/2025",
+    publicationDate: "27/06/2025",
+    applicationAuthority: "Patent Office Journal No. 26/2025, India",
+    inventors: [
+      "Mr. BABA GANDHI KANDAGATLA",
+      "Ms. KODIPYAKA RAKSHITHA", 
+      "Mr. KUMMARI SAI TEJA",
+      "Mr. SUSHANTH REDDY PEDDIREDDY",
+      "Mr. BHARADWAJ REDDY VANCHA",
+      "Mr. PRADYUMNA JONNALAGADDA",
+      "Mr. CHANDRAHAAS JASTI"
+    ],
+    applicant: "Keshav Memorial Institute of Technology",
+    abstract: "A computer-implemented system and method are provided for the classification and segmentation of breast cancer in ultrasound images, integrated with virtual reality (VR) visualization for diagnostic support and medical training. The system employs deep learning models, including a Vision Transformer (ViT-B/16) and pre-trained EfficientNet B0 for image classification, and UNETR and UNet-based architectures for tumor segmentation. Input ultrasound images are processed to generate diagnostic predictions and corresponding segmentation masks, which are combined and displayed in an interactive VR environment developed using Unreal Engine. The system enables real-time visualization and user interaction, allowing clinicians and trainees to explore tumor characteristics and adjust outputs as needed. The invention enhances diagnostic accuracy and provides a scalable tool for clinical education and decision support.",
+    status: "Published"
   }
 ];
