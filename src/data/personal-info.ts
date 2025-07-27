@@ -47,7 +47,7 @@ export interface Patent {
 export const personalInfo = {
   name: "Baba Gandhi Kandagatla",
   title: "AI/ML Engineer and Full-Stack Developer",
-  summary: "AI/ML Engineer and Full-Stack Developer with expertise in building scalable machine learning solutions, cloud-based AI applications, and end-to-end software deployment. Proven experience in designing and deploying production-level AI solutions, integrating ML models with real-time systems, and optimizing performance using data-driven insights. Currently enhancing back-end skills with Spring Boot while continuously expanding leadership and technical acumen.",
+  summary: "AI/ML Engineer and Full-Stack Developer with expertise in building scalable machine learning solutions, cloud-based AI applications, and end-to-end software deployment. Currently working as a Software Developer Intern at Eventbrite, focusing on identity and authentication systems for web and iOS platforms. Proven experience in designing and deploying production-level AI solutions, integrating ML models with real-time systems, and optimizing performance using data-driven insights. Continuously expanding technical expertise in mobile development, testing frameworks, and backend analytics.",
   email: "babagandhikandagatla@gmail.com",
   phone: "+91 8309103893",
   location: "Hyderabad, India",
@@ -93,6 +93,14 @@ export const skills: Skill[] = [
     items: ["React.js", "Next.js", "Node.js", "Express.js", "Flask", "FastAPI", "HTML5", "CSS", "Tailwind CSS", "Material UI", "Bootstrap", "REST APIs"]
   },
   {
+    category: "Mobile Development",
+    items: ["iOS Development", "Swift", "Xcode", "Unit Testing", "Mobile App Testing", "Test Case Design"]
+  },
+  {
+    category: "Identity & Authentication",
+    items: ["MFA (Multi-Factor Authentication)", "Identity Management", "Privacy Systems", "Authentication Flows", "Security Testing"]
+  },
+  {
     category: "Data Science & ML",
     items: ["Model Fine Tuning", "Hyperparameter Tuning", "Transfer Learning", "ANN", "CNN", "RCNN (NLP)", "Transformers", "TensorFlow", "PyTorch", "Scikit-learn", "Pandas", "NumPy", "Computer Vision", "NLP", "Reinforcement Learning"]
   },
@@ -111,6 +119,13 @@ export const skills: Skill[] = [
 ];
 
 export const experiences: Experience[] = [
+  {
+    id: "eventbrite-intern",
+    title: "Software Developer Intern",
+    organization: "Eventbrite",
+    duration: "Jul 2025 - Dec 2025",
+    description: "Working with the Identity Team focusing on Privacy and Attendee Mobile App development. Conducting weekly testing for mobile applications, writing comprehensive unit test case flows for iOS app, and developing new features. Implemented backend analytics pages for custom events including MFA and authentication systems. Contributing to bug fixes and feature enhancements for identity and authentication components across web and iOS platforms."
+  },
   {
     id: "skillsage-ai",
     title: "Backend Developer - AI-Based Mock Interviews",
@@ -135,6 +150,12 @@ export const experiences: Experience[] = [
 ];
 
 export const achievements: Achievement[] = [
+  {
+    id: "eventbrite-internship",
+    title: "Software Developer Intern at Eventbrite",
+    description: "Selected for prestigious internship at Eventbrite, working on identity and authentication systems for web and mobile platforms. Contributing to iOS app development, testing frameworks, and backend analytics implementation.",
+    date: "Jul 2025"
+  },
   {
     id: "patent-breast-cancer",
     title: "Patent Published: Breast Cancer Classification & Segmentation with 3D Visualization",
@@ -173,7 +194,7 @@ export const achievements: Achievement[] = [
   },
   {
     id: "hackathon-Mjcet",
-    title: "1st Prize in Enginerd Hackathon (MJCET College of Engineering)",
+    title: "1st Prize in Code Purple Hackathon (MJCET College of Engineering)",
     description: "Awarded first prize in the hackathon.",
     date: "Aug 2023"
   },

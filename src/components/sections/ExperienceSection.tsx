@@ -143,21 +143,37 @@ interface ExperienceCardProps {
 }
 
 function ExperienceCard({ title, organization, duration, description }: ExperienceCardProps) {
+  const isCurrentRole = duration.includes("Present") || duration.includes("2025") && !duration.includes("Apr 2025");
+  
   return (
     <motion.div
       whileHover={hoverVariants.lift.hover}
       className="h-full"
     >
-      <Card className="h-full overflow-hidden transition-all duration-300 border hover:border-primary/50">
+      <Card className={`h-full overflow-hidden transition-all duration-300 border hover:border-primary/50 ${
+        isCurrentRole ? 'border-primary/30 bg-primary/5' : ''
+      }`}>
         <CardHeader className="p-6 pb-4">
           <div className="flex justify-between items-start">
-            <CardTitle className="text-xl">{title}</CardTitle>
+            <div className="flex-1">
+              <CardTitle className="text-xl">{title}</CardTitle>
+              {isCurrentRole && (
+                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary mt-2">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
+                  Current Role
+                </div>
+              )}
+            </div>
             <motion.div 
               whileHover={hoverVariants.subtle.hover}
               whileTap={hoverVariants.subtle.tap}
-              className="bg-primary/10 p-2 rounded-full"
+              className={`p-2 rounded-full ${
+                isCurrentRole ? 'bg-primary/20' : 'bg-primary/10'
+              }`}
             >
-              <Briefcase className="h-5 w-5 text-primary" />
+              <Briefcase className={`h-5 w-5 ${
+                isCurrentRole ? 'text-primary' : 'text-primary'
+              }`} />
             </motion.div>
           </div>
           <CardDescription className="text-base">{organization}</CardDescription>
@@ -181,19 +197,33 @@ interface AchievementCardProps {
 }
 
 function AchievementCard({ title, description, date }: AchievementCardProps) {
+  const isRecentAchievement = date.includes("Jul 2025");
+  
   return (
     <motion.div
       whileHover={hoverVariants.lift.hover}
       className="h-full"
     >
-      <Card className="h-full overflow-hidden transition-all duration-300 border hover:border-primary/50">
+      <Card className={`h-full overflow-hidden transition-all duration-300 border hover:border-primary/50 ${
+        isRecentAchievement ? 'border-primary/30 bg-primary/5' : ''
+      }`}>
         <CardHeader className="p-6 pb-4">
           <div className="flex justify-between items-start">
-            <CardTitle className="text-xl line-clamp-2">{title}</CardTitle>
+            <div className="flex-1">
+              <CardTitle className="text-xl line-clamp-2">{title}</CardTitle>
+              {isRecentAchievement && (
+                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-primary/20 text-primary mt-2">
+                  <div className="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></div>
+                  Recent
+                </div>
+              )}
+            </div>
             <motion.div 
               whileHover={hoverVariants.subtle.hover}
               whileTap={hoverVariants.subtle.tap}
-              className="bg-primary/10 p-2 rounded-full"
+              className={`p-2 rounded-full ${
+                isRecentAchievement ? 'bg-primary/20' : 'bg-primary/10'
+              }`}
             >
               <Award className="h-5 w-5 text-primary" />
             </motion.div>
