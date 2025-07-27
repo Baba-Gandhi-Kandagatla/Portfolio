@@ -151,12 +151,6 @@ export const experiences: Experience[] = [
 
 export const achievements: Achievement[] = [
   {
-    id: "eventbrite-internship",
-    title: "Software Developer Intern at Eventbrite",
-    description: "Selected for prestigious internship at Eventbrite, working on identity and authentication systems for web and mobile platforms. Contributing to iOS app development, testing frameworks, and backend analytics implementation.",
-    date: "Jul 2025"
-  },
-  {
     id: "patent-breast-cancer",
     title: "Patent Published: Breast Cancer Classification & Segmentation with 3D Visualization",
     description: "Published patent for an AI-based system that classifies and segments breast cancer masses in ultrasound imagery with VR visualization for medical training and diagnosis.",
