@@ -537,7 +537,7 @@ function Hero() {
               variants={heroItemVariants}
               className="flex flex-wrap justify-center lg:justify-start gap-3"
             >
-              {["Python", "TypeScript", "React", "AWS", "Machine Learning", "iOS"].map((skill, i) => (
+              {["Python", "Java", "React", "AWS", "Machine Learning"].map((skill, i) => (
                 <motion.span
                   key={skill}
                   className="tag"
