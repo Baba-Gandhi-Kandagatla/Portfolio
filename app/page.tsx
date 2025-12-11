@@ -93,7 +93,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       y: "-100%",
       transition: {
         duration: 0.8,
-        ease: [0.42, 0, 0.58, 1],
+        ease: [0.42, 0, 0.58, 1] as const,
         delay: 0.2,
       },
     },
