@@ -44,10 +44,22 @@ export interface Patent {
   status: string;
 }
 
+export interface Publication {
+  id: string;
+  title: string;
+  paperId: string;
+  conference: string;
+  date: string;
+  authors: string[];
+  abstract: string;
+  certificateImage?: string;
+  status: string;
+}
+
 export const personalInfo = {
   name: "Baba Gandhi Kandagatla",
   title: "AI/ML Engineer and Full-Stack Developer",
-  summary: "AI/ML Engineer and Full-Stack Developer with expertise in building scalable machine learning solutions, cloud-based AI applications, and end-to-end software deployment. Currently working as a Software Developer Intern at Eventbrite, focusing on identity and authentication systems for web and iOS platforms. Proven experience in designing and deploying production-level AI solutions, integrating ML models with real-time systems, and optimizing performance using data-driven insights. Continuously expanding technical expertise in mobile development, testing frameworks, and backend analytics.",
+  summary: "AI/ML Engineer and Full-Stack Developer with expertise in building scalable machine learning solutions, cloud-based AI applications, and end-to-end software deployment. Proven experience in designing and deploying production-level solutions, integrating AI models with real-time systems, and optimizing performance using data-driven insights. Currently enhancing back-end skills with Spring Boot while deepening applied AI research and real-world model deployment.",
   email: "babagandhikandagatla@gmail.com",
   phone: "+91 8309103893",
   location: "Hyderabad, India",
@@ -59,8 +71,8 @@ export const personalInfo = {
     {
       institution: "Keshav Memorial Institute of Technology",
       degree: "B.Tech in Computer Science Engineering (AI/ML)",
-      duration: "2022-2026 (Expected)",
-      gpa: "8.21/10.0",
+      duration: "November 2022 - June 2026",
+      gpa: "8.08/10.0",
       courses: [
         "Natural Language Processing",
         "Database Management",
@@ -106,7 +118,7 @@ export const skills: Skill[] = [
   },
   {
     category: "Cloud & DevOps",
-    items: ["AWS (EC2, Lambda, S3)", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "GitHub Actions"]
+    items: ["AWS (EC2, Lambda, S3, CDK, CodePipeline, CloudWatch)", "Docker", "Kubernetes", "Jenkins", "CI/CD", "Git", "GitHub Actions"]
   },
   {
     category: "Databases",
@@ -123,46 +135,19 @@ export const experiences: Experience[] = [
     id: "eventbrite-intern",
     title: "Software Developer Intern",
     organization: "Eventbrite",
-    duration: "Jul 2025 - Dec 2025",
-    description: "Working with the Identity Team focusing on Privacy and Attendee Mobile App development. Conducting weekly testing for mobile applications, writing comprehensive unit test case flows for iOS app, and developing new features. Implemented backend analytics pages for custom events including MFA and authentication systems. Contributing to bug fixes and feature enhancements for identity and authentication components across web and iOS platforms."
-  },
-  {
-    id: "skillsage-ai",
-    title: "Backend Developer - AI-Based Mock Interviews",
-    organization: "KMIT",
-    duration: "May 2024 - Apr 2025",
-    description: "Joined as Backend Developer in a team of 4 and integrated voice-based features into the frontend. Engineered real time AI-driven mock interviews using student data."
-  },
-  {
-    id: "results-automation",
-    title: "Full-Stack Developer",
-    organization: "NGIT, KMEC, KMCE",
-    duration: "Sep 2023 - Dec 2023",
-    description: "Automated exam result processing, reducing turnaround time from 3 days to 1 minute. Currently implemented in examination branches at three colleges (NGIT, KMEC, KMCE)."
-  },
-  {
-    id: "physics-lab",
-    title: "Web Developer",
-    organization: "KMIT",
-    duration: "Sep 2023 - Dec 2023",
-    description: "Designed a lab simulation tool for physics experiments and student revision; deployed in January 2023 as part of a team of 3 developers."
+    duration: "Jul 2025 - Jun 2026",
+    description: "• Led resolution of 90+ authentication and authorization issues across web and iOS, including 30+ high-impact bugs and a large-scale abuse/spam incident, strengthening platform security and user trust. • Drove reliability of identity flows by designing and fixing 20+ E2E tests (login, logout, password reset, email edit, role management), reducing flakiness in QA/Prod and catching regressions before release. • Refined user experience for organisers and attendees by centralising and correcting error messages, tightening validation (including alignment with Auth0), and refining UI text, resulting in clearer, more intuitive authentication journeys. • Reduced weekly URL-related failures by over 95% and fixed multiple edge-case issues (SQL errors, session handling, admin cookie on logout, Apple toggle in linked accounts), significantly increasing stability of core identity services. • Introduced infrastructure-as-code for CloudWatch dashboards using CDK (with CI/CD integration and approvals) and instrumented key auth events with analytics, enabling better observability and data-driven decision-making."
   }
 ];
 
 export const achievements: Achievement[] = [
-  {
-    id: "patent-breast-cancer",
-    title: "Patent Published: Breast Cancer Classification & Segmentation with 3D Visualization",
-    description: "Published patent for an AI-based system that classifies and segments breast cancer masses in ultrasound imagery with VR visualization for medical training and diagnosis.",
-    date: "Jun 2025"
-  },
   {
     id: "hackathon-tworks",
     title: "Top 15 in Hackathon (t-works, MGIT)",
     description: "Selected among the top 15 teams.",
     date: "May 2025"
   },
-    {
+  {
     id: "utkrishti-puraskar",
     title: "KMIT's Utkrishti Puraskar",
     description: "Recognized for outstanding achievements during KMIT's Awards Day.",
@@ -261,6 +246,20 @@ export const leadership = [
   }
 ];
 
+export const publications: Publication[] = [
+  {
+    id: "ieee-etcom-2025",
+    title: "A Comparative Evaluation of Contextual and Statistical Text Representations in Deep Sequential Architectures for Multiclass Sentiment Classification",
+    paperId: "350",
+    conference: "IEEE ETCOM 2025",
+    date: "December 2025",
+    authors: ["Baba Gandhi Kandagatla"],
+    abstract: "In today's digital age, customer reviews significantly influence consumer behavior and business strategies, making their sentiment analysis crucial for informed decision making. Sentiment classification of user generated reviews is essential for businesses and researchers to gauge public opinion. In this study, we perform a comparative evaluation of multiple deep learning based Natural Language Processing models such as Traditional Recurrent Neural Networks (RNN) and Neural Networks (NN), Long Short Term Memory (LSTM), Gated Recurrent Unit (GRU), and Bidirectional Encoder Representations from Transformers (BERT) each paired with contextual and statistical vectorizers as well i.e., Word2Vec, Term Frequency Inverse Document Frequency (TF-IDF) and BERT encoder. Experiments were conducted on a concatenated corpus comprising 120,000 Yelp reviews, 60,000 Amazon product reviews, and 7,000 Rotten Tomatoes movie critiques. Model performance was assessed using accuracy, F1-score, area under the ROC curve (AUC), processing power and time taken for each epoch.",
+    certificateImage: "/img/IEEE_ETCOM_certificate.png",
+    status: "Presented & Published"
+  }
+];
+
 export const patents: Patent[] = [
   {
     id: "breast-cancer-classification",
@@ -272,7 +271,7 @@ export const patents: Patent[] = [
     applicationAuthority: "Patent Office Journal No. 26/2025, India",
     inventors: [
       "Mr. BABA GANDHI KANDAGATLA",
-      "Ms. KODIPYAKA RAKSHITHA", 
+      "Ms. KODIPYAKA RAKSHITHA",
       "Mr. KUMMARI SAI TEJA",
       "Mr. SUSHANTH REDDY PEDDIREDDY",
       "Mr. BHARADWAJ REDDY VANCHA",
