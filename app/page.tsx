@@ -71,7 +71,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       transition: {
         delay: 0.3 + i * 0.08,
         duration: 0.6,
-        ease: "easeOut",
+        ease: [0, 0, 0.2, 1] as const,
       },
     }),
   };
@@ -83,7 +83,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       transition: {
         delay: 1.2,
         duration: 0.8,
-        ease: "easeOut",
+        ease: [0, 0, 0.2, 1] as const,
       },
     },
   };
@@ -186,13 +186,13 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+        transition={{ delay: 0.5, duration: 0.8, ease: [0, 0, 0.2, 1] }}
         className="absolute top-8 left-8 w-16 h-16 border-l-2 border-t-2 border-[var(--accent)]"
       />
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
+        transition={{ delay: 0.6, duration: 0.8, ease: [0, 0, 0.2, 1] }}
         className="absolute bottom-8 right-8 w-16 h-16 border-r-2 border-b-2 border-[var(--accent)]"
       />
     </motion.div>
@@ -215,7 +215,7 @@ function PageReveal({ children }: { children: React.ReactNode }) {
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0, 0, 0.2, 1] as const } },
 };
 
 const staggerContainer = {
@@ -228,7 +228,7 @@ const staggerContainer = {
 
 const scaleIn = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0, 0, 0.2, 1] as const } },
 };
 
 // Components
@@ -260,7 +260,7 @@ function FloatingShape({ className, delay = 0 }: { className: string; delay?: nu
       transition={{
         duration: 8,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: [0.42, 0, 0.58, 1],
         delay,
       }}
     />
@@ -288,7 +288,7 @@ function Navbar() {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      transition={{ duration: 0.8, ease: [0, 0, 0.2, 1], delay: 0.2 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass py-4" : "py-6"}`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
@@ -359,7 +359,7 @@ function Hero() {
       filter: "blur(0px)",
       transition: {
         duration: 0.8,
-        ease: "easeOut",
+        ease: [0, 0, 0.2, 1] as const,
       },
     },
   };
@@ -373,7 +373,7 @@ function Hero() {
       transition: {
         delay: 0.5 + i * 0.04,
         duration: 0.8,
-        ease: "easeOut",
+        ease: [0, 0, 0.2, 1] as const,
       },
     }),
   };
@@ -394,7 +394,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 1, ease: [0, 0, 0.2, 1], delay: 0.2 }}
             className="relative flex-shrink-0"
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px]">
@@ -402,12 +402,12 @@ function Hero() {
               <motion.div
                 className="absolute inset-0 rounded-full border-2 border-[var(--accent)]/30"
                 animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" as const }}
               />
               <motion.div
                 className="absolute -inset-3 rounded-full border border-dashed border-[var(--accent)]/20"
                 animate={{ rotate: -360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" as const }}
               />
 
               {/* Photo container */}
