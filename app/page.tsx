@@ -415,7 +415,7 @@ function Hero() {
                 <div className="w-full h-full rounded-full overflow-hidden bg-[var(--bg-secondary)]">
                   {!imageError ? (
         <Image
-                      src="/img/profile.jpeg"
+                      src="./img/profile.jpeg"
                       alt={personalInfo.name}
                       fill
                       className="object-cover"

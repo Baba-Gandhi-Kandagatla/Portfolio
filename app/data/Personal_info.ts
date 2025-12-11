@@ -255,7 +255,7 @@ export const publications: Publication[] = [
     date: "December 2025",
     authors: ["Baba Gandhi Kandagatla"],
     abstract: "In today's digital age, customer reviews significantly influence consumer behavior and business strategies, making their sentiment analysis crucial for informed decision making. Sentiment classification of user generated reviews is essential for businesses and researchers to gauge public opinion. In this study, we perform a comparative evaluation of multiple deep learning based Natural Language Processing models such as Traditional Recurrent Neural Networks (RNN) and Neural Networks (NN), Long Short Term Memory (LSTM), Gated Recurrent Unit (GRU), and Bidirectional Encoder Representations from Transformers (BERT) each paired with contextual and statistical vectorizers as well i.e., Word2Vec, Term Frequency Inverse Document Frequency (TF-IDF) and BERT encoder. Experiments were conducted on a concatenated corpus comprising 120,000 Yelp reviews, 60,000 Amazon product reviews, and 7,000 Rotten Tomatoes movie critiques. Model performance was assessed using accuracy, F1-score, area under the ROC curve (AUC), processing power and time taken for each epoch.",
-    certificateImage: "/img/IEEE_ETCOM_certificate.png",
+    certificateImage: "./img/IEEE_ETCOM_certificate.png",
     status: "Presented & Published"
   }
 ];
